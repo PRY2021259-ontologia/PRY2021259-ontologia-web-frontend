@@ -1,5 +1,6 @@
 import Link from "next/link"
-import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
 export default function Navigation() {
   return (
@@ -7,8 +8,9 @@ export default function Navigation() {
       <div className="container py-4">
         <div className="flex flex-row px-2.5 justify-around">
           <div className="flex items-center">
-            <a href="/">
-              <Image src="/Mark.svg" alt="Logo" width={40} height={40} />
+            <a href="/"
+              className="text-bluepotato">
+              <FontAwesomeIcon icon={faEthereum} size="3x" />
             </a>
             <Link href="/suggestions">
               <button className="ml-16 text-bluepotato font-medium">Sugerencias</button>
