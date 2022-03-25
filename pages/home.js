@@ -1,19 +1,95 @@
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from "next/link"
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-export default function Home() {
+export default function Index() {
   return (
-    <div>
+    <div >
+      <Head>
+        <title> Potato Ontology</title>
+        <meta name="description" content="Generated with Next.Js" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Navigation />
-      <main className="bg-gray">
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur dolor sit amet ipsum fringilla, quis rhoncus ipsum congue. Donec sodales enim tempus fringilla elementum. Phasellus sagittis gravida urna, ut rhoncus neque tempor non. Duis laoreet facilisis felis, et porta nulla viverra vitae. Pellentesque non blandit metus, porta luctus diam. Nam luctus nisi odio, volutpat mattis diam ornare a. In nunc sem, tincidunt nec euismod ut, mollis a lacus. Fusce nec eros nec diam ornare semper. Integer ultricies elit est, nec commodo purus porttitor sit amet. Cras tempus ultrices auctor. Aenean maximus convallis nibh, in imperdiet elit porttitor vel. Sed at consequat magna. Quisque euismod ex ipsum, finibus viverra mi facilisis pulvinar. Aenean diam metus, convallis at ante nec, rhoncus commodo metus.
 
-          Vestibulum eleifend a orci vitae facilisis. Phasellus quis orci quam. Nunc consectetur lacus ipsum, a malesuada quam pharetra non. Morbi sollicitudin, sapien id euismod tincidunt, tellus neque faucibus nunc, a venenatis quam magna in ex. Mauris vulputate, odio ac condimentum tincidunt, mauris orci venenatis augue, vel bibendum augue ex a justo. Aenean tempor vehicula nisi eget imperdiet. Maecenas fermentum nibh ut est convallis posuere. In imperdiet dui enim, et aliquet lacus ultricies non. Quisque elit dui, faucibus et ipsum ut, maximus pellentesque turpis. Etiam mollis ornare mi eget pretium. Ut neque odio, sodales id metus in, dictum vulputate nulla. Suspendisse aliquet fringilla eleifend. Maecenas nec molestie mi.
+      <main className='mx-auto w-2/3'>
+        <div className='flex flex-row py-12 justify-center'>
+          <Image src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
+            alt="home image" width={300} height={250} />
+        </div>
 
-          Praesent risus velit, blandit sit amet finibus quis, sodales non est. Aliquam tincidunt odio ac odio lobortis tincidunt. Aliquam libero mauris, laoreet sed lacinia sit amet, cursus a libero. Nulla in gravida purus. Vestibulum rhoncus tempus ornare. Suspendisse pretium pulvinar mauris vel sodales. Aenean tempus tortor ut nibh interdum facilisis. Maecenas ultricies accumsan quam, ac interdum purus ultrices a. Vivamus varius, dui ut porttitor tincidunt, nunc velit sagittis lacus, ut consequat lectus risus id metus. Donec varius tristique lorem, ac consectetur dui lobortis vel. Cras et tincidunt justo. Donec urna libero, mollis at vulputate sed, porta nec arcu. In sodales semper venenatis.
+        <div className='flex flex-row relative justify-center items-center'>
+            <input className="w-3/5 rounded-md px-3 border border-black h-8" type="text" placeholder="Search for names..." />
+          <div className='absolute text-black '>
+            <a href="/"><FontAwesomeIcon icon={faSearch} size="1x" /></a>
+          </div>
+        </div>
+     
+        <div className='flex flex-row justify-center py-6 space-x-10'>
+          <Link href="/">
+            <button className="rounded-md w-48 h-9 bg-bluebuscar text-white">
+              Buscar
+            </button>
+          </Link>
+          <Link href="/">
+            <button className="rounded-md w-48 bg-bluepotato text-white">
+              Ayuda en la búsqueda
+            </button>
+          </Link>
+        </div>
+
+        <div className='flex flex-row justify-around py-4 text-base font-medium'>
+          <div className=''>Categoría 1
+            <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
+              <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                alt="avatar" width={55} height={42} className="rounded" />
+              <div className="flex items-center px-6">
+                <p className='text-sm font-medium'>Categoría 1</p>
+              </div>
+            </div>
+          </div>
+
+          <div className=''>Categoría 2
+            <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
+              <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                alt="avatar" width={55} height={42} className="rounded" />
+              <div className="flex items-center px-6">
+                <p className='text-sm font-medium'>Categoría 2</p>
+              </div>
+            </div>
+            <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
+              <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                alt="avatar" width={55} height={42} className="rounded" />
+              <div className="flex items-center px-6">
+                <p className='text-sm font-medium'>Categoría 2</p>
+              </div>
+            </div>
+            <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
+              <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                alt="avatar" width={55} height={42} className="rounded" />
+              <div className="flex items-center px-6">
+                <p className='text-sm font-medium'>Categoría 2</p>
+              </div>
+            </div>
+          </div>
+
+          <div className=''>Categoría 3
+            <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
+              <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                alt="avatar" width={55} height={42} className="rounded" />
+              <div className="flex items-center px-6">
+                <p className='text-sm font-medium'>Categoría 3</p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
+
       <Footer />
     </div>
   )

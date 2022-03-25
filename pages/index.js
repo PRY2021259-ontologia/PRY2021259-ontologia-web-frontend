@@ -23,13 +23,16 @@ export default function Index() {
             alt="home image" width={300} height={250} />
         </div>
 
-        <div className='flex flex-row relative justify-center items-center'>
-            <input className="w-3/5 rounded-md px-3 border border-black h-8" type="text" placeholder="Search for names..." />
-          <div className='absolute text-black '>
-            <a href="/"><FontAwesomeIcon icon={faSearch} size="1x" /></a>
+        <div className='flex flex-row relative justify-end items-center'>
+          <input className="w-2/5 rounded-md px-3 border border-black h-8" type="text" placeholder="Search for names..." />
+          <div>
+            <div className='flex justify-end absolute text-black '>
+              <a className='pr-8' href="/"><FontAwesomeIcon icon={faSearch} size="1x" /></a>
+            </div>
           </div>
         </div>
-     
+
+
         <div className='flex flex-row justify-center py-6 space-x-10'>
           <Link href="/">
             <button className="rounded-md w-48 h-9 bg-bluebuscar text-white">
