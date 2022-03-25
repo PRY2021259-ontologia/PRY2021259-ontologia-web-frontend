@@ -10,7 +10,7 @@ import {
 export default function Footer() {
     return (
         <footer className="mx-auto flex justify-around px-12 py-9 bg-white text-gray-400 border-t-2 border-gray-200">
-            <p className="">© 2021 PotatoOntology, Inc. All rights reserved.</p>
+            <p className="">© 2022 PotatoOntology, Inc. All rights reserved.</p>
             <div className="space-x-10" >
                 <a href="https://www.facebook.com"
                     className="" >

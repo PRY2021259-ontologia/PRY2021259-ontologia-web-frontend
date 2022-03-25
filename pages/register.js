@@ -1,17 +1,57 @@
-import Navigation from '../components/navigation'
 import Footer from '../components/footer'
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebook,
+  faTwitter,
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons'
 
-export default function Register() {
+export default function Login() {
   return (
     <div>
-      <Navigation />
-      <main className="bg-slate-700">
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur dolor sit amet ipsum fringilla, quis rhoncus ipsum congue. Donec sodales enim tempus fringilla elementum. Phasellus sagittis gravida urna, ut rhoncus neque tempor non. Duis laoreet facilisis felis, et porta nulla viverra vitae. Pellentesque non blandit metus, porta luctus diam. Nam luctus nisi odio, volutpat mattis diam ornare a. In nunc sem, tincidunt nec euismod ut, mollis a lacus. Fusce nec eros nec diam ornare semper. Integer ultricies elit est, nec commodo purus porttitor sit amet. Cras tempus ultrices auctor. Aenean maximus convallis nibh, in imperdiet elit porttitor vel. Sed at consequat magna. Quisque euismod ex ipsum, finibus viverra mi facilisis pulvinar. Aenean diam metus, convallis at ante nec, rhoncus commodo metus.
 
-          Vestibulum eleifend a orci vitae facilisis. Phasellus quis orci quam. Nunc consectetur lacus ipsum, a malesuada quam pharetra non. Morbi sollicitudin, sapien id euismod tincidunt, tellus neque faucibus nunc, a venenatis quam magna in ex. Mauris vulputate, odio ac condimentum tincidunt, mauris orci venenatis augue, vel bibendum augue ex a justo. Aenean tempor vehicula nisi eget imperdiet. Maecenas fermentum nibh ut est convallis posuere. In imperdiet dui enim, et aliquet lacus ultricies non. Quisque elit dui, faucibus et ipsum ut, maximus pellentesque turpis. Etiam mollis ornare mi eget pretium. Ut neque odio, sodales id metus in, dictum vulputate nulla. Suspendisse aliquet fringilla eleifend. Maecenas nec molestie mi.
+      <Head>
+        <title> Potato Ontology</title>
+        <meta name="description" content="Generated with Next.Js" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-          Praesent risus velit, blandit sit amet finibus quis, sodales non est. Aliquam tincidunt odio ac odio lobortis tincidunt. Aliquam libero mauris, laoreet sed lacinia sit amet, cursus a libero. Nulla in gravida purus. Vestibulum rhoncus tempus ornare. Suspendisse pretium pulvinar mauris vel sodales. Aenean tempus tortor ut nibh interdum facilisis. Maecenas ultricies accumsan quam, ac interdum purus ultrices a. Vivamus varius, dui ut porttitor tincidunt, nunc velit sagittis lacus, ut consequat lectus risus id metus. Donec varius tristique lorem, ac consectetur dui lobortis vel. Cras et tincidunt justo. Donec urna libero, mollis at vulputate sed, porta nec arcu. In sodales semper venenatis.
+      <main className='mx-auto w-2/3 font-medium'>
+        <div className='flex flex-col items-center pt-10'>
+
+          <div className='flex flex-col items-center'>
+            <p className="text-bluepotato">
+              <Image src="/Mark.svg" alt="Logo" width={52} height={48} /></p>
+            <div>
+              <div className='flex flex-col items-center'>
+                <h1 className='font-extrabold text-3xl py-3'>Regístrate</h1>
+                <p className='font-normal text-gray-600 pb-6'>O <Link href='/login'><button className='text-bluepotato'>inicia sesión</button>
+                </Link></p>
+              </div>
+            </div>
+          </div>
+
+          <div className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 w-2/5 h-full'>
+            <div className='py-3'>
+              <label className='flex flex-row py-1 text-gray-700'>Correo</label>
+              <input className="w-full rounded-md px-3 border border-gray-300 h-10" type="email" />
+            </div>
+            <div className='py-3'>
+              <label className='flex flex-row py-1 text-gray-700'>Contraseña</label>
+              <input className="w-full rounded-md px-3 border border-gray-300 h-10" type="password" />
+            </div>
+            <div className='py-3'>
+              <Link href='/login'>
+                <button className="w-full h-9 rounded-md bg-bluepotato font-medium text-white">
+                  Registrar cuenta
+                </button>
+              </Link>
+            </div>
+          </div>
+
         </div>
       </main>
       <Footer />
