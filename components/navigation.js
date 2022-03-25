@@ -4,8 +4,8 @@ import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
 export default function Navigation() {
   return (
-    <nav className="flex flex-col relative items-center bg-white">
-      <div className="container py-6">
+    <nav className="flex flex-col sticky top-0 z-10 shadow-md items-center bg-white border-b-2">
+      <div className="container py-4">
         <div className="flex flex-row px-2.5 justify-around">
           <div className="flex items-center">
             <a href="/"

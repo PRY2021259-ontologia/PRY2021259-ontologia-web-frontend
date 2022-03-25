@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'bluepotato': '#1E6594',
+        'bluebuscar': '#13293D',
       }
     },
   },
