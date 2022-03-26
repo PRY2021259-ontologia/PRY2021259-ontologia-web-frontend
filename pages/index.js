@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Description from '../components/description'
 import Image from 'next/image'
 import Link from "next/link"
 import Navigation from '../components/navigation'
@@ -9,11 +9,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export default function Index() {
   return (
     <div >
-      <Head>
-        <title> Potato Ontology</title>
-        <meta name="description" content="Generated with Next.Js" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+
+      <Description/>
 
       <Navigation />
 
@@ -23,24 +20,22 @@ export default function Index() {
             alt="home image" width={300} height={250} />
         </div>
 
-        <div className='flex flex-row relative justify-end items-center'>
-          <input className="w-2/5 rounded-md px-3 border border-black h-8" type="text" placeholder="Search for names..." />
-          <div>
-            <div className='flex justify-end absolute text-black '>
-              <a className='pr-8' href="/"><FontAwesomeIcon icon={faSearch} size="1x" /></a>
-            </div>
+        <div className='flex flex-row relative justify-center items-center'>
+            <input className="w-3/5 rounded-md px-3 border border-black h-8" type="text" placeholder="Search for names..." />
+          <div className='absolute text-black '>
+            <a href="/"><FontAwesomeIcon icon={faSearch} size="1x" /></a>
           </div>
         </div>
 
 
         <div className='flex flex-row justify-center py-6 space-x-10'>
-          <Link href="/">
-            <button className="rounded-md w-48 h-9 bg-bluebuscar text-white">
+          <Link href="/search">
+            <button className="rounded-md hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white">
               Buscar
             </button>
           </Link>
-          <Link href="/">
-            <button className="rounded-md w-48 bg-bluepotato text-white">
+          <Link href="/assistedsearch">
+            <button className="rounded-md hover:bg-bluepotatohover w-48 bg-bluepotato text-white">
               Ayuda en la búsqueda
             </button>
           </Link>
@@ -91,16 +86,6 @@ export default function Index() {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
       </main>
 
       <Footer />
