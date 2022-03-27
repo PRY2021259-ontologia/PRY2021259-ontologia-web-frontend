@@ -18,7 +18,7 @@ export default function Register() {
             <div>
               <div className='flex flex-col items-center'>
                 <h1 className='font-extrabold text-3xl py-3'>Regístrate</h1>
-                <p className='font-normal text-gray-600 pb-6'>O <Link href='/login'><button className='text-bluepotato'>inicia sesión</button>
+                <p className='font-normal text-gray-600 pb-6'>O <Link href='/login'><button className='text-bluepotato hover:underline'>inicia sesión</button>
                 </Link></p>
               </div>
             </div>
@@ -28,36 +28,39 @@ export default function Register() {
             <div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Nombres</label>
-                <input className="w-full rounded-md px-3 border border-gray-300 text-gray-600 h-10" type="text" />
+                <input className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="text" />
               </div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Apellidos</label>
-                <input className="w-full rounded-md px-3 border border-gray-300 text-gray-600 h-10" type="text" />
+                <input className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="text" />
               </div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Correo</label>
-                <input className="w-full rounded-md px-3 border border-gray-300 text-gray-600 h-10" type="email" />
+                <input className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="email" />
               </div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Contraseña</label>
-                <input className="w-full rounded-md px-3 border border-gray-300 text-gray-600 h-10" type="password" />
+                <input className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="password" />
               </div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Repetir contraseña</label>
-                <input className="w-full rounded-md px-3 border border-gray-300 text-gray-600 h-10" type="password" />
+                <input className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="password" />
               </div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Fecha de nacimiento</label>
-                <input className="w-full rounded-md px-3 border border-gray-300 text-gray-600 h-10" type="date" />
+                <input className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="date" />
               </div>
               <div className='py-2'>
                 <label className='flex flex-row py-1 text-gray-700'>Ocupacion</label>
-                <select className="w-full rounded-md px-3 border text-gray-600 border-gray-300 h-10">
+                <select className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10">
                   <option selected>Seleccione una opcion</option>
                   <option className="text-gray-700" value="1">Ganadero</option>
                   <option className="text-gray-700" value="2">Cientifico</option>
                   <option className="text-gray-700" value="3">Cocinero</option>
                 </select>
+              </div>
+              <div className='flex flex-row justify-between py-2'>
+                <label className='text-gray-800 font-normal'><input type="checkbox" /> Aceptar los <Link href='/'><a className='hover:underline text-bluepotato'>términos y condiciones</a></Link></label>
               </div>
               <div className='py-5'>
                 <Link href='/login'>
@@ -71,6 +74,7 @@ export default function Register() {
 
         </div>
       </main>
+      
       <Footer />
     </div>
   )
