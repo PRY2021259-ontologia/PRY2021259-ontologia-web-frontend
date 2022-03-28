@@ -9,7 +9,7 @@ export default function AssistedSearch() {
       <Description/>
       
       <Navigation />
-      <main className="mx-auto w-2/3">
+      <main className="mx-auto w-2/3 min-h-screen">
         <div className='flex flex-row'>
           <h1>AYUDA EN BUSQUEDA</h1>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur dolor sit amet ipsum fringilla, quis rhoncus ipsum congue. Donec sodales enim tempus fringilla elementum. Phasellus sagittis gravida urna, ut rhoncus neque tempor non. Duis laoreet facilisis felis, et porta nulla viverra vitae. Pellentesque non blandit metus, porta luctus diam. Nam luctus nisi odio, volutpat mattis diam ornare a. In nunc sem, tincidunt nec euismod ut, mollis a lacus. Fusce nec eros nec diam ornare semper. Integer ultricies elit est, nec commodo purus porttitor sit amet. Cras tempus ultrices auctor. Aenean maximus convallis nibh, in imperdiet elit porttitor vel. Sed at consequat magna. Quisque euismod ex ipsum, finibus viverra mi facilisis pulvinar. Aenean diam metus, convallis at ante nec, rhoncus commodo metus.

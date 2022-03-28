@@ -26,6 +26,7 @@ module.exports = {
         'bluepotatohover': '#13496e',
         'bluebuscar': '#13293D',
         'bluebuscarhover': '#1a4163',
+        'whiteresultado': '#F9FAFB',	
       }
     },
   },

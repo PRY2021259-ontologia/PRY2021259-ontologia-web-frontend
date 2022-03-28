@@ -2,20 +2,25 @@ import Footer from '../components/footer'
 import Description from '../components/description'
 import Image from 'next/image'
 import Link from 'next/link'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
-  faTwitter,
-  faGithub,
+  faGoogle,
 } from '@fortawesome/free-brands-svg-icons'
 
 export default function Login() {
+
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
+
   return (
     <div>
 
       <Description />
 
-      <main className='mx-auto w-2/3 font-medium'>
+      <main className='mx-auto w-2/3 font-medium min-h-screen'>
         <div className='flex flex-col items-center pt-10'>
 
           <div className='flex flex-col items-center'>
@@ -55,18 +60,17 @@ export default function Login() {
                 <p className='w-full pt-3 text-center border-b leading-[0.1em]'>
                   <span className='bg-white py-3 px-2'>También puedes iniciar sesión con</span></p>
               </div>
-              <div className='flex flex-row justify-around text-gray-500 py-5'>
-                <button href="https://www.facebook.com"
-                  className="border-2 border-gray-300 w-28 h-9 rounded-md hover:bg-gray-200" >
-                  <FontAwesomeIcon icon={faFacebook} size="lg" />
-                </button>
-                <button href="https://www.twitter.com"
-                  className="border-2 border-gray-300 w-28 h-9 rounded-md hover:bg-gray-200">
-                  <FontAwesomeIcon icon={faTwitter} size="lg" />
-                </button>
+              <div className='flex flex-row justify-between text-gray-500 py-5'>
+                <FacebookLogin appId="650582519344591"
+                  callback={responseFacebook}
+                  render={renderProps => (
+                    <button onClick={renderProps.onClick} className="border-2 border-gray-300 w-48 h-9 rounded-md hover:bg-gray-200" >
+                      <FontAwesomeIcon icon={faFacebook} size="lg" />
+                    </button>
+                  )} />
                 <button href="https://www.github.com/"
-                  className="border-2 border-gray-300 w-28 h-9 rounded-md hover:bg-gray-200">
-                  <FontAwesomeIcon icon={faGithub} size="lg" />
+                  className="border-2 border-gray-300 w-48 h-9 rounded-md hover:bg-gray-200">
+                  <FontAwesomeIcon icon={faGoogle} size="lg" />
                 </button>
               </div>
             </div>
