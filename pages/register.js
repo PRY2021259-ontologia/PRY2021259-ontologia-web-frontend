@@ -9,7 +9,7 @@ export default function Register() {
 
       <Description />
 
-      <main className='mx-auto w-2/3 font-medium'>
+      <main className='mx-auto w-2/3 font-medium min-h-screen'>
         <div className='flex flex-col items-center pt-10'>
 
           <div className='flex flex-col items-center'>
@@ -60,7 +60,7 @@ export default function Register() {
                 </select>
               </div>
               <div className='flex flex-row justify-between py-2'>
-                <label className='text-gray-800 font-normal'><input type="checkbox" /> Aceptar los <Link href='/'><a className='hover:underline text-bluepotato'>términos y condiciones</a></Link></label>
+                <label className='text-gray-800 font-normal'><input type="checkbox" /> Aceptar los <a className='hover:underline text-bluepotato' href='https://www.privacypolicies.com/live/be4d3db6-a44b-4c49-be03-9e2df14e122a' target="_blank" rel="noreferrer noopener">términos y condiciones</a></label>
               </div>
               <div className='py-5'>
                 <Link href='/login'>
@@ -74,7 +74,7 @@ export default function Register() {
 
         </div>
       </main>
-      
+
       <Footer />
     </div>
   )

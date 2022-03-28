@@ -14,16 +14,18 @@ export default function Home() {
 
       <Navigation />
 
-      <main className='mx-auto w-2/3'>
+      <main className='mx-auto w-2/3 min-h-screen'>
         <div className='flex flex-row py-12 justify-center'>
           <Image src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
             alt="home image" width={300} height={250} />
         </div>
 
-        <div className='flex flex-row relative justify-center items-center'>
-          <input className="w-3/5 rounded-md px-3 border border-black h-8" type="text" placeholder="Search for names..." />
-          <div className='absolute text-black '>
-            <a href="/home"><FontAwesomeIcon icon={faSearch} size="1x" /></a>
+        <div className='flex flex-row relative justify-center'>
+          <div className='relative w-3/5'>
+            <input className="w-full rounded-md px-3 border border-black h-10" type="text" placeholder='Ingrese su búsqueda..'></input>
+            <div className='pointer-events-none absolute text-black inset-y-2 right-3'>
+              <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
+            </div>
           </div>
         </div>
 
