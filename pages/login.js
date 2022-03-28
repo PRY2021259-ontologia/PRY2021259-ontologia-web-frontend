@@ -21,7 +21,7 @@ export default function Login() {
       <Description />
 
       <main className='mx-auto w-2/3 font-medium min-h-screen'>
-        <div className='flex flex-col items-center pt-10'>
+        <div className='flex flex-col items-center pt-14'>
 
           <div className='flex flex-col items-center'>
             <p className="text-bluepotato">
