@@ -16,12 +16,12 @@ export default function Navigation() {
           </div>
           <div className="flex flex-row items-center space-x-10">
             <Link href="/login">
-              <button className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500">
+              <button className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
                 Inicia sesión
               </button>
             </Link>
             <Link href="/register">
-              <button className="flex justify-center items-center hover:bg-bluepotatohover h-8 rounded-md w-28 bg-bluepotato text-white">
+              <button className="flex justify-center items-center hover:bg-bluepotatohover h-8 rounded-md w-28 bg-bluepotato text-white font-medium">
                 Regístrate
               </button>
             </Link>

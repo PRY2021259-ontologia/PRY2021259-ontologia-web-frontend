@@ -31,12 +31,12 @@ export default function Index() {
 
         <div className='flex flex-row justify-center py-6 space-x-10'>
           <Link href="/search">
-            <button className="rounded-md hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white">
+            <button className="rounded-md hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white font-medium">
               Buscar
             </button>
           </Link>
           <Link href="/assistedsearch">
-            <button className="rounded-md hover:bg-bluepotatohover w-48 bg-bluepotato text-white">
+            <button className="rounded-md hover:bg-bluepotatohover w-48 bg-bluepotato text-white font-medium">
               Ayuda en la búsqueda
             </button>
           </Link>
