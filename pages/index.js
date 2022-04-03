@@ -44,7 +44,8 @@ export default function Index({ session }) {
           ) : (
             <p>Skeleton</p>
           )
-        }
+        } 
+        
         <button onClick={()=> signOut()}>
           logout
         </button>
