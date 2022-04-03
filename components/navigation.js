@@ -5,7 +5,7 @@ export default function Navigation() {
   return (
     <nav className="flex flex-col sticky top-0 z-10 shadow-md items-center bg-white border-b-2">
       <div className="container py-4">
-        <div className="flex flex-row px-2.5 justify-around">
+        <div className="flex flex-row px-36 justify-between">
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <Image src="/Mark.svg" alt="Logo" width={40} height={40} />
