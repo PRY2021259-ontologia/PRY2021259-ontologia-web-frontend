@@ -6,20 +6,42 @@ export default function AssistedSearch() {
   return (
     <div>
 
-      <Description/>
-      
+      <Description />
+
       <Navigation />
       <main className="mx-auto w-2/3 min-h-screen">
-        <div className='flex flex-row'>
-          <h1>AYUDA EN BUSQUEDA</h1>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur dolor sit amet ipsum fringilla, quis rhoncus ipsum congue. Donec sodales enim tempus fringilla elementum. Phasellus sagittis gravida urna, ut rhoncus neque tempor non. Duis laoreet facilisis felis, et porta nulla viverra vitae. Pellentesque non blandit metus, porta luctus diam. Nam luctus nisi odio, volutpat mattis diam ornare a. In nunc sem, tincidunt nec euismod ut, mollis a lacus. Fusce nec eros nec diam ornare semper. Integer ultricies elit est, nec commodo purus porttitor sit amet. Cras tempus ultrices auctor. Aenean maximus convallis nibh, in imperdiet elit porttitor vel. Sed at consequat magna. Quisque euismod ex ipsum, finibus viverra mi facilisis pulvinar. Aenean diam metus, convallis at ante nec, rhoncus commodo metus.
-
-          Vestibulum eleifend a orci vitae facilisis. Phasellus quis orci quam. Nunc consectetur lacus ipsum, a malesuada quam pharetra non. Morbi sollicitudin, sapien id euismod tincidunt, tellus neque faucibus nunc, a venenatis quam magna in ex. Mauris vulputate, odio ac condimentum tincidunt, mauris orci venenatis augue, vel bibendum augue ex a justo. Aenean tempor vehicula nisi eget imperdiet. Maecenas fermentum nibh ut est convallis posuere. In imperdiet dui enim, et aliquet lacus ultricies non. Quisque elit dui, faucibus et ipsum ut, maximus pellentesque turpis. Etiam mollis ornare mi eget pretium. Ut neque odio, sodales id metus in, dictum vulputate nulla. Suspendisse aliquet fringilla eleifend. Maecenas nec molestie mi.
-
-          Praesent risus velit, blandit sit amet finibus quis, sodales non est. Aliquam tincidunt odio ac odio lobortis tincidunt. Aliquam libero mauris, laoreet sed lacinia sit amet, cursus a libero. Nulla in gravida purus. Vestibulum rhoncus tempus ornare. Suspendisse pretium pulvinar mauris vel sodales. Aenean tempus tortor ut nibh interdum facilisis. Maecenas ultricies accumsan quam, ac interdum purus ultrices a. Vivamus varius, dui ut porttitor tincidunt, nunc velit sagittis lacus, ut consequat lectus risus id metus. Donec varius tristique lorem, ac consectetur dui lobortis vel. Cras et tincidunt justo. Donec urna libero, mollis at vulputate sed, porta nec arcu. In sodales semper venenatis.
+        <div className='flex flex-col'>
+          <div className='py-10 '>
+            <h1 className='font-bold text-5xl'>Búsqueda guiada</h1>
+          </div>
+          <div className='flex flex-row pt-6 justify-center'>
+            <div className='flex flex-row ml-10 items-center'>
+              <img src='/pensando.png' alt='assistedimg' />
+              <div className='flex flex-col justify-center shadow-lg border rounded-lg ml-2 mr-20 p-12 h-52 w-80'>
+                <div className='py-2'>
+                  <p className='flex w-56 font-semibold text-center'>¿Lo que buscas esta relacionado a enfermedades?</p>
+                </div>
+                <div className='flex flex-row justify-center space-x-4 text-sm py-2'>
+                  <button className='rounded-md w-24 h-7 bg-skyblue text-white'>Sí</button>
+                  <button className='rounded-md w-24 h-7 bg-bluebuscar text-white'>No</button>
+                </div>
+              </div>
+            </div>
+            <div className='flex flex-col mx-20 py-10'>
+              <h1 className='font-bold text-3xl py-6'>
+                Enlaces relacionados
+              </h1>
+              <ul className='text-skyblue list-disc px-8'>
+                <li className='py-1 hover:underline'>www.ontologiapapa.com</li>
+                <li className='py-1 hover:underline'>www.ontologiapapa.com</li>
+                <li className='py-1 hover:underline'>www.ontologiapapa.com</li>
+                <li className='py-1 hover:underline'>www.ontologiapapa.com</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   )
