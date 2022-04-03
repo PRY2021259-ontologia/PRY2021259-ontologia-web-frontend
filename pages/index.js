@@ -5,14 +5,50 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { getSession, signOut } from 'next-auth/react'
 
-export default function Index() {
+export const getServerSideProps = async (context) => {
+
+  const session = await getSession(context)
+
+  if (!session) return {
+    redirect: {
+      destination: '/login',
+      permanent: false
+    }
+  }
+
+  return {
+    props: {
+      session
+    }
+  }
+}
+
+export default function Index({ session }) {
   return (
     <div >
 
       <Description />
 
       <Navigation />
+
+      <div>
+        {
+          session ? (
+            <div>
+              <h1>{session.user.name}</h1>
+              <p>{session.user.email}</p>
+              <img src={session.user.image} alt="" />
+            </div>
+          ) : (
+            <p>Skeleton</p>
+          )
+        }
+        <button onClick={()=> signOut()}>
+          logout
+        </button>
+      </div>
 
       <main className='mx-auto w-2/3 min-h-screen'>
         <div className='flex flex-row py-12 justify-center'>
@@ -93,3 +129,5 @@ export default function Index() {
     </div>
   )
 }
+
+
