@@ -5,8 +5,27 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { getSession, signOut } from 'next-auth/react'
 
-export default function Index() {
+export const getServerSideProps = async (context) => {
+
+  const session = await getSession(context)
+
+  if (!session) return {
+    redirect: {
+      destination: '/login',
+      permanent: false
+    }
+  }
+
+  return {
+    props: {
+      session
+    }
+  }
+}
+
+export default function Index({ session }) {
   return (
     <div >
 
@@ -26,7 +45,7 @@ export default function Index() {
             <p>Skeleton</p>
           )
         }
-        <button onClick={() => signOut()}>
+        <button onClick={()=> signOut()}>
           logout
         </button>
       </div>
@@ -109,3 +128,5 @@ export default function Index() {
     </div>
   )
 }
+
+
