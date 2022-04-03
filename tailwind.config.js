@@ -28,6 +28,7 @@ module.exports = {
         'bluebuscarhover': '#1a4163',
         'whiteresultado': '#F9FAFB',	
         'skyblue': '#2970CA',
+        'bluedetails': '#3360FF',
       }
     },
   },
