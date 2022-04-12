@@ -4,7 +4,11 @@ Ontologia project
 
 ## Getting Started
 
-First, run the development server:
+Recuerda que instalamos las depencias con:
+
+npm install
+
+Para levantar el entorno de desarrollo usa:
 
 ```bash
 npm run dev
@@ -12,13 +16,45 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El navegador abrirá por defecto o puedes dirigirte a la ruta [http://localhost:3000](http://localhost:3000) with your browser to see the result. Si tienes otros proyectos corriendo en el 
+mismo puerto, ten encuenta que se abrirá en el siguiente.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Las vistas que necesites modificar las encuentras en "pages".
+
+El proyecto hace uso de Tailwind como framework para las hojas de estilo, todo esto se puede modificar en los tags de las vistas. Es como editar en html pero más cool.
+
+La carpeta "components" contiene los componentes que necesitas para el desarrollo.
+
+Para ingresar a las rutas de la API, usa:
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+TO-DO (Importante): 
+Refactorizar el diseño responsive de las vistas, añadiendo más modificiones a las diferentes medidas. Para entender mejor que medidas puedes dirigirte a "tailwind.config.js".
+
+Refactorizar el diseño responsive de los componentes, añadiendo más modificiones a las diferentes medidas.
+
+Conectar el backend con el frontend. La URL está puesta en el archivo "next.config.js" solo falta llamarla en las funciones.
+
+El proyecto tiene implementado seguridad con NextAuth.js, para que el usuario pueda ingresar a la aplicación. Tiene configurado Facebook y Google. De momento falta acomodarlo en el navbar. Pero por el momento tenemos puede leer los datos de los usuarios que se atentiquen. 
+Para probarlo dirigete a "localhost:3000/login" y logeate con FB o Google.
+
+Para poder levantar la Aplicacion y contar con seguridad, es necesario que tengas estas varibles de entorno.
+
+FACEBOOK_ID=650582519344591
+FACEBOOK_SECRET=c13a4c925963afd8732c3e60ae4594a8
+
+GOOGLE_CLIENT_ID=710259229537-lnn5u12j2cooc58pibfmt65hnplengmj.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+
+AUTH0_ID=iQxVmX548I46a42S2xXDRSpT2GVlZd3X
+AUTH0_SECRET=vdIIjzIwTpyuH5W9KA-z2HcpOzIpqKixRXSrXLey8K2T-Kr6u8SPrlSeTmABGtcj
+AUTH0_ISSUER=dev-5308igcp.us.auth0.com
+
+Ponlas en un ".env.local" y guarda el archivo.
+
 
 ## Learn More
 
