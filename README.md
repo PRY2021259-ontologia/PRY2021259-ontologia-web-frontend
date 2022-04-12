@@ -41,20 +41,9 @@ Conectar el backend con el frontend. La URL está puesta en el archivo "next.con
 El proyecto tiene implementado seguridad con NextAuth.js, para que el usuario pueda ingresar a la aplicación. Tiene configurado Facebook y Google. De momento falta acomodarlo en el navbar. Pero por el momento tenemos puede leer los datos de los usuarios que se atentiquen. 
 Para probarlo dirigete a "localhost:3000/login" y logeate con FB o Google.
 
-Para poder levantar la Aplicacion y contar con seguridad, es necesario que tengas estas varibles de entorno.
-
-FACEBOOK_ID=650582519344591
-FACEBOOK_SECRET=c13a4c925963afd8732c3e60ae4594a8
-
-GOOGLE_CLIENT_ID=710259229537-lnn5u12j2cooc58pibfmt65hnplengmj.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=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
-
-AUTH0_ID=iQxVmX548I46a42S2xXDRSpT2GVlZd3X
-AUTH0_SECRET=vdIIjzIwTpyuH5W9KA-z2HcpOzIpqKixRXSrXLey8K2T-Kr6u8SPrlSeTmABGtcj
-AUTH0_ISSUER=dev-5308igcp.us.auth0.com
+Para poder levantar la Aplicacion y contar con seguridad, es necesario que tengas estas varibles de entorno, dirigete al archivo "entornovariables.txt".
 
 Ponlas en un ".env.local" y guarda el archivo.
-
 
 ## Learn More
 
