@@ -13,13 +13,13 @@ export default function Search() {
 
       <Navigation />
 
-      <main className="mx-auto min-h-screen w-2/3">
-        <div className='flex flex-row'>
+      <main className="celular:text-sm md:text-base mx-auto min-h-screen w-2/3">
+        <div className='flex md:flex-row celular:flex-col-reverse'>
           <div className='flex flex-col w-3/4'>
             <div className='px-5 py-6 items-center'>
               <div className='relative w-2/3'>
-                <input className="w-full rounded-md px-3 border border-gray-400 h-10" type="text" placeholder='Búsqueda'></input>
-                <div className='absolute text-gray-400 inset-y-2 right-3'>
+                <input className="md:w-full celular:w-60 rounded-md px-3 border border-gray-400 h-10" type="text" placeholder='Búsqueda'></input>
+                <div className='absolute text-gray-400 md:inset-y-2 md:right-3 celular:inset-y-2 celular:-right-36'>
                   <Link href="/search">
                     <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
                   </Link>
@@ -27,8 +27,8 @@ export default function Search() {
               </div>
             </div>
 
-            <div className='flex flex-wrap py-8 px-8 gap-x-10 gap-y-12'>
-              <div className='shadow-md shadow-gray-400 rounded-lg w-[370px] h-48'>
+            <div className='flex md:flex-wrap celular:flex-col py-8 md:px-8 md:gap-x-10 gap-y-12'>
+              <div className='shadow-md shadow-gray-400 rounded-lg  celular:w-[260px] md:w-[370px] h-48'>
                 <div className=' px-6 pt-2.5'>
                   <h1 className='text-gray-900 text-xl font-medium'>Resultado 1</h1>
                   <p className='py-2 text-gray-500'>Solanum tuberosum es una especia herbácea perteneciente al género Solanum originaria de la región que comprende el altiplano sur del Perú</p>
@@ -40,7 +40,7 @@ export default function Search() {
                 </div>
               </div>
 
-              <div className='shadow-md shadow-gray-400 rounded-lg w-[370px] h-48'>
+              <div className='shadow-md shadow-gray-400 rounded-lg celular:w-[260px] md:w-[370px] h-48'>
                 <div className=' px-6 pt-2.5'>
                   <h1 className='text-gray-900 text-xl font-medium'>Resultado 2</h1>
                   <p className='py-2 text-gray-500'>Solanum tuberosum es una especia herbácea perteneciente al género Solanum originaria de la región que comprende el altiplano sur del Perú</p>
@@ -52,7 +52,7 @@ export default function Search() {
                 </div>
               </div>
 
-              <div className='shadow-md shadow-gray-400 rounded-lg w-[370px] h-48'>
+              <div className='shadow-md shadow-gray-400 rounded-lg celular:w-[260px] md:w-[370px] h-48'>
                 <div className=' px-6 pt-2.5'>
                   <h1 className='text-gray-900 text-xl font-medium'>Resultado 3</h1>
                   <p className='py-2 text-gray-500'>Solanum tuberosum es una especia herbácea perteneciente al género Solanum originaria de la región que comprende el altiplano sur del Perú</p>
@@ -64,7 +64,7 @@ export default function Search() {
                 </div>
               </div>
 
-              <div className='shadow-md shadow-gray-400 rounded-lg w-[370px] h-48'>
+              <div className='shadow-md shadow-gray-400 rounded-lg celular:w-[260px] md:w-[370px] h-48'>
                 <div className=' px-6 pt-2.5'>
                   <h1 className='text-gray-900 text-xl font-medium'>Resultado 4</h1>
                   <p className='py-2 text-gray-500'>Solanum tuberosum es una especia herbácea perteneciente al género Solanum originaria de la región que comprende el altiplano sur del Perú</p>

@@ -11,14 +11,14 @@ export default function Details() {
 
       <Navigation />
 
-      <main className="mx-auto w-2/3 min-h-screen">
-        <div className='flex flex-col'>
-          <div className='flex flex-row my-6 py-8 px-10 justify-between shadow-md rounded-lg'>
-            <div className="flex flex-row items-end space-x-20">
-              <h1 className='font-extrabold text-4xl'>Enfermedades de la papa</h1>
+      <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
+        <div className='flex flex-col md:items-start celular:items-center'>
+          <div className='flex md:flex-row celular:flex-col my-6 py-8 px-10 justify-between md:shadow-md rounded-lg'>
+            <div className="flex md:flex-row celular:flex-col md:items-end md:space-x-20">
+              <h1 className='font-extrabold text-4xl md:py-0 celular:py-4 text-center'>Enfermedades de la papa</h1>
               <button className='w-40 h-8 bg-skyblue text-white rounded-md font-medium'>Guardar detalle</button>
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col md:py-0 celular:py-4 md:w-[250px]'>
               <div className='flex justify-center'>
                 <p className='text-lg font-medium'>¿Te fue útil esta búsqueda?</p>
               </div>
@@ -29,8 +29,8 @@ export default function Details() {
             </div>
           </div>
 
-          <div className='flex flex-row items-center'>
-            <div className='flex flex-col w-1/2'>
+          <div className='flex md:flex-row celular:flex-col items-center'>
+            <div className='flex flex-col md:w-1/2'>
               <h1 className='text-3xl px-10 pt-5 font-medium'>Titulo 1</h1>
               <div className=' px-10 py-5 '>
                 <p>
@@ -53,7 +53,7 @@ export default function Details() {
                 </p>
               </div>
             </div>
-            <div className='flex flex-row justify-between items-center h-72 shadow-lg rounded-xl w-1/2 m-6 p-20'>
+            <div className='flex md:flex-row celular:flex-col-reverse md:justify-between items-center h-72 shadow-lg rounded-xl w-1/2 m-6 p-20'>
               <div>
                 <ul className='text-skyblue'>
                   <li className='hover:underline'>www.ontologiapapa.com</li>

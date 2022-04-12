@@ -28,7 +28,7 @@ export default function Login() {
 
       <Description />
 
-      <main className='mx-auto w-2/3 font-medium min-h-screen'>
+      <main className=' celular:text-sm md:text-base  md:mx-auto md:w-2/3 font-medium min-h-screen'>
         <div className='flex flex-col items-center pt-14'>
 
           <div className='flex flex-col items-center'>
@@ -43,7 +43,7 @@ export default function Login() {
             </div>
           </div>
 
-          <div className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 w-2/5 h-full'>
+          <div className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 md:w-2/5 h-full celular:w-full'>
             <form onSubmit={handleSubmit(myfunc)}>
               <div>
                 <div className='py-3'>
@@ -73,10 +73,10 @@ export default function Login() {
               </div>
             </form>
             <div className='flex flex-row justify-between text-gray-500 py-5'>
-              <button onClick={() => signIn('facebook')} className="border-2 border-gray-300 w-48 h-9 rounded-md hover:bg-gray-200" >
+              <button onClick={() => signIn('facebook')} className="border-2 border-gray-300 celular:w-28 md:w-48 h-9 rounded-md hover:bg-gray-200" >
                 <FontAwesomeIcon icon={faFacebook} size="lg" />
               </button>
-              <button onClick={() => signIn('google')} className="border-2 border-gray-300 w-48 h-9 rounded-md hover:bg-gray-200">
+              <button onClick={() => signIn('google')} className="border-2 border-gray-300 celular:w-28 md:w-48 h-9 rounded-md hover:bg-gray-200">
                 <FontAwesomeIcon icon={faGoogle} size="lg" />
               </button>
             </div>

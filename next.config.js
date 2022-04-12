@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ['images.squarespace-cdn.com', 'images.unsplash.com', 'blush.design'],
-  },
 }
 
 module.exports = nextConfig
+
+module.exports = {
+  images: {
+    domains: ['images.squarespace-cdn.com', 'images.unsplash.com', 'blush.design'],
+  },
+  BASE_URL: 'https://backend-ontologia.azurewebsites.net/',
+  //BASE_URL: 'http://localhost:5000/'
+}

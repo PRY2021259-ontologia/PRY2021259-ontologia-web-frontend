@@ -9,13 +9,13 @@ export default function Definitions() {
             <Description />
 
             <Navigation />
-            <main className="mx-auto w-2/3 min-h-screen">
+            <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
                 <div className='flex flex-col'>
                     <div className='py-10 '>
-                        <h1 className='font-bold text-5xl'>Conceptos guardados</h1>
+                        <h1 className='font-bold celular:text-4xl md:text-5xl'>Conceptos guardados</h1>
                     </div>
-                    <div className='flex flex-row space-x-16'>
-                        <div className='flex flex-col p-7 shadow-md rounded-lg w-2/3 h-1/2 my-2 border'>
+                    <div className='flex celular:flex-col md:flex-row md:space-x-16'>
+                        <div className='flex flex-col p-7 shadow-md rounded-lg md:w-2/3 h-1/2 my-2 border'>
                             <h1 className='font-bold text-lg'>
                                 Rango de fechas
                             </h1>
@@ -37,9 +37,9 @@ export default function Definitions() {
                             </div>
                         </div>
                         <div className='flex flex-col'>
-                            <div className='p-5 shadow-md rounded-lg my-2 border'>
+                            <div className=' p-5 shadow-md rounded-lg my-2 border '>
                                 <h1 className='py-1 font-medium'>Tipos</h1>
-                                <p className='py-3 text-gray-500 text-lg'>Solanum tuberosum​ es una especie herbácea perteneciente al género
+                                <p className='py-3 text-gray-500 md:text-lg'>Solanum tuberosum​ es una especie herbácea perteneciente al género
                                     Solanum originaria de la región que comprende el altiplano sur del
                                     PerúSolanum tuberosum​ es una especie herbácea perteneciente al género
                                     Solanum originaria de la región que comprende el altiplano sur del Perú
@@ -48,7 +48,7 @@ export default function Definitions() {
                             </div>
                             <div className='p-5 shadow-md rounded-lg my-2 border'>
                                 <h1 className='py-1 font-medium'>Tipos</h1>
-                                <p className='py-3 text-gray-500 text-lg'>Solanum tuberosum​ es una especie herbácea perteneciente al género
+                                <p className='py-3 text-gray-500 md:text-lg'>Solanum tuberosum​ es una especie herbácea perteneciente al género
                                     Solanum originaria de la región que comprende el altiplano sur del
                                     PerúSolanum tuberosum​ es una especie herbácea perteneciente al género
                                     Solanum originaria de la región que comprende el altiplano sur del Perú
@@ -57,7 +57,7 @@ export default function Definitions() {
                             </div>
                             <div className='p-5 shadow-md rounded-lg my-2 border'>
                                 <h1 className='py-1 font-medium'>Tipos</h1>
-                                <p className='py-3 text-gray-500 text-lg    '>Solanum tuberosum​ es una especie herbácea perteneciente al género
+                                <p className='py-3 text-gray-500 md:text-lg'>Solanum tuberosum​ es una especie herbácea perteneciente al género
                                     Solanum originaria de la región que comprende el altiplano sur del
                                     PerúSolanum tuberosum​ es una especie herbácea perteneciente al género
                                     Solanum originaria de la región que comprende el altiplano sur del Perú
