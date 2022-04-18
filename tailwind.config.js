@@ -44,6 +44,12 @@ module.exports = {
       indigo: colors.indigo,
       yellow: colors.yellow,
     },
+    //extend: {
+    //  fontFamily: {
+    //    sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+    // },
+    //},
   },
+  
   plugins: [],
 }
