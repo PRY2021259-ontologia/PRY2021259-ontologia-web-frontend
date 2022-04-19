@@ -15,11 +15,11 @@ export default function Search() {
 
       <main className="celular:text-sm md:text-base mx-auto min-h-screen w-2/3">
         <div className='flex md:flex-row celular:flex-col-reverse'>
-          <div className='flex flex-col w-3/4'>
-            <div className='px-5 py-6 items-center'>
-              <div className='relative w-2/3 z-[-1]'>
+          <div className='flex flex-col celular:w-full md:w-3/4'>
+            <div className='md:px-5 md:py-6 items-center celular:flex celular:text-center'>
+              <div className='relative celular:w-full md:w-2/3 z-[-1] celular:bottom-[250px]'>
                 <input className="md:w-full celular:w-60 rounded-md px-3 border border-gray-400 h-10" type="text" placeholder='Búsqueda'></input>
-                <div className='absolute text-gray-400 md:inset-y-2 md:right-3 celular:inset-y-2 celular:-right-36'>
+                <div className='absolute text-gray-400 md:inset-y-2 md:right-3 celular:inset-y-2.5 celular:flex celular:right-5'>
                   <Link href="/search">
                     <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
                   </Link>
@@ -79,9 +79,9 @@ export default function Search() {
 
           </div>
 
-          <div className='flex items-center z-[-1]'>
-            <Image src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
-              alt="home image" width={340} height={270} />
+          <div className='flex items-center z-[-1] celular:py-5 md:py-0 celular:relative celular:top-16'>
+            <img src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
+              alt="home image" />
           </div>
         </div>
 

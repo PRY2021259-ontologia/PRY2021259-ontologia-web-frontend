@@ -19,12 +19,12 @@ export default function Suggestions() {
 
       <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
         <div className='flex flex-col'>
-          <h1 className='font-bold celular:text-2xl md:text-5xl py-10'>Sugerencias</h1>
+          <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-10'>Sugerencias</h1>
           <div className='flex md:flex-row celular:flex-col justify-between'>
             <div className='py-10'>
               <img src="/remotelife.png" alt="remoteLife" />
             </div>
-            <div className=' md:w-1/2'>
+            <div className=' md:w-1/2 celular:pb-6 md:pb-0'>
               <form onSubmit={handleSubmit(myfunc)}>
 
                 <div className='py-2'>

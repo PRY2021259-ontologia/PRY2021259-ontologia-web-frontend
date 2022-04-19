@@ -11,12 +11,12 @@ export default function difinitionshistory() {
             <Description />
 
             <Navigation />
-            <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
+            <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-2/3 min-h-screen">
                 <div className='flex flex-col'>
                     <div className='py-10 '>
-                        <h1 className='font-bold text-5xl'>Conceptos guardados</h1>
+                        <h1 className='font-bold celular:text-4xl md:text-5xl'>Conceptos guardados</h1>
                     </div>
-                    <div className='flex celular:flex-col md:flex-row md:space-x-16'>
+                    <div className='flex celular:flex-col md:flex-row md:space-x-16 celular:mb-6 md:mb-0'>
                         <div className='flex flex-col p-7 shadow-md rounded-lg celular:w-full md:w-1/4 h-1/2 my-2 border'>
                             <h1 className='font-bold text-lg'>
                                 Rango de fechas
@@ -41,7 +41,7 @@ export default function difinitionshistory() {
                         <div className='flex flex-col w-full'>
                             <div className='py-1 px-3 shadow-md rounded-lg my-2 border flex flex-row justify-between items-center'>
                                 <div className='flex celular:flex-col md:flex-row md:items-center'>
-                                    <a><FontAwesomeIcon icon={faStar} size="1x" /></a>
+                                    <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                     <h1 className='px-1 font-medium'>La Roya -</h1>
                                     <h1 className='flex text-bluedetails py-3 underline'>www.ontologiapapa.com</h1>
                                 </div>
@@ -49,7 +49,7 @@ export default function difinitionshistory() {
                             </div>
                             <div className='py-1 px-3 shadow-md rounded-lg my-2 border flex flex-row justify-between items-center'>
                                 <div className='flex celular:flex-col md:flex-row md:items-center'>
-                                    <a><FontAwesomeIcon icon={faStar} size="1x" /></a>
+                                    <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                     <h1 className='px-1 font-medium'>La Roya -</h1>
                                     <h1 className='flex text-bluedetails py-3 underline'>www.ontologiapapa.com</h1>
                                 </div>
@@ -57,7 +57,7 @@ export default function difinitionshistory() {
                             </div>
                             <div className='py-1 px-3 shadow-md rounded-lg my-2 border flex flex-row justify-between items-center'>
                                 <div className='flex celular:flex-col md:flex-row md:items-center'>
-                                    <a><FontAwesomeIcon icon={faStar} size="1x" /></a>
+                                    <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                     <h1 className='px-1 font-medium'>La Roya -</h1>
                                     <h1 className='flex text-bluedetails py-3 underline'>www.ontologiapapa.com</h1>
                                 </div>
@@ -66,7 +66,7 @@ export default function difinitionshistory() {
                             <div className='py-2'>Ayer- Lunes, 4 de abril del 2022</div>
                             <div className='py-1 px-3 shadow-md rounded-lg my-2 border flex flex-row justify-between items-center'>
                                 <div className='flex celular:flex-col md:flex-row md:items-center'>
-                                    <a><FontAwesomeIcon icon={faStar} size="1x" /></a>
+                                    <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                     <h1 className='px-1 font-medium'>La Roya -</h1>
                                     <h1 className='flex text-bluedetails py-3 underline'>www.ontologiapapa.com</h1>
                                 </div>
@@ -75,7 +75,7 @@ export default function difinitionshistory() {
                             <div className='py-2'>Lunes, 3 de febrero del 2022</div>
                             <div className='py-1 px-3 shadow-md rounded-lg my-2 border flex flex-row justify-between items-center'>
                                 <div className='flex celular:flex-col md:flex-row md:items-center'>
-                                    <a><FontAwesomeIcon icon={faStar} size="1x" /></a>
+                                    <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                     <h1 className='px-1 font-medium'>La Roya -</h1>
                                     <h1 className='flex text-bluedetails py-3 underline'>www.ontologiapapa.com</h1>
                                 </div>
@@ -84,7 +84,7 @@ export default function difinitionshistory() {
                             <div className='py-2'>Ayer- Lunes, 4 de abril del 2022</div>
                             <div className='py-1 px-3 shadow-md rounded-lg my-2 border flex flex-row justify-between items-center'>
                                 <div className='flex celular:flex-col md:flex-row md:items-center'>
-                                    <a><FontAwesomeIcon icon={faStar} size="1x" /></a>
+                                    <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                     <h1 className='px-1 font-medium'>La Roya -</h1>
                                     <h1 className='flex text-bluedetails py-3 underline'>www.ontologiapapa.com</h1>
                                 </div>

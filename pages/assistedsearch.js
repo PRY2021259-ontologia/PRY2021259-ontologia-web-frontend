@@ -9,15 +9,15 @@ export default function AssistedSearch() {
       <Description />
 
       <Navigation />
-      <main className="mx-auto w-2/3 min-h-screen">
+      <main className="celular:w-full md:mx-auto md:w-2/3 min-h-screen">
         <div className='flex flex-col'>
-          <div className='md:py-10 celular:pt-10'>
-            <h1 className='font-bold celular:text-2xl md:text-5xl'>Búsqueda guiada</h1>
+          <div className='celular:pt-10 celular:py-5 md:py-10 celular:pl-10'>
+            <h1 className='font-bold celular:text-4xl md:text-5xl '>Búsqueda guiada</h1>
           </div>
           <div className='flex md:flex-row celular:flex-col md:pt-6 justify-center'>
-            <div className='flex md:flex-row celular:flex-col ml-10 items-center'>
+            <div className='flex md:flex-row celular:flex-col md:ml-10 items-center'>
               <img src='/pensando.png' alt='assistedimg' />
-              <div className='flex flex-col justify-center shadow-lg border rounded-lg celular:ml-16 md:ml-2 mr-20 p-12 h-52 w-80'>
+              <div className='flex flex-col justify-center shadow-lg border rounded-lg md:ml-2 celular:mx-2 md:mr-20 p-12 h-52 w-80'>
                 <div className='py-2'>
                   <p className='flex w-56 font-semibold text-center'>¿Lo que buscas esta relacionado a enfermedades?</p>
                 </div>
@@ -27,7 +27,7 @@ export default function AssistedSearch() {
                 </div>
               </div>
             </div>
-            <div className='flex flex-col celular:mx-0 celular:py-0 md:mx-20 md:py-10'>
+            <div className='flex flex-col celular:mx-12 celular:py-4 md:mx-20 md:py-10'>
               <h1 className='font-bold text-3xl py-6'>
                 Enlaces relacionados
               </h1>

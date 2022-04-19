@@ -72,7 +72,7 @@ export default function Login() {
                 </div>
               </div>
             </form>
-            <div className='flex flex-row justify-between text-gray-500 py-5'>
+            <div className='flex flex-row celular:justify-around md:justify-between text-gray-500 py-5'>
               <button onClick={() => signIn('facebook')} className="border-2 border-gray-300 celular:w-28 md:w-48 h-9 rounded-md hover:bg-gray-200" >
                 <FontAwesomeIcon icon={faFacebook} size="lg" />
               </button>

@@ -110,7 +110,7 @@ export default function Navigation() {
                 </Link>
               </div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/assitedsearch">
+                <Link href="/assistedsearch">
                   <a className="text-bluepotato py-1 rounded-md font-medium">Búsqueda guiada</a>
                 </Link>
               </div>
