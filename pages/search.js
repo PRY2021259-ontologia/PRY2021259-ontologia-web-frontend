@@ -17,7 +17,7 @@ export default function Search() {
         <div className='flex md:flex-row celular:flex-col-reverse'>
           <div className='flex flex-col w-3/4'>
             <div className='px-5 py-6 items-center'>
-              <div className='relative w-2/3'>
+              <div className='relative w-2/3 z-[-1]'>
                 <input className="md:w-full celular:w-60 rounded-md px-3 border border-gray-400 h-10" type="text" placeholder='Búsqueda'></input>
                 <div className='absolute text-gray-400 md:inset-y-2 md:right-3 celular:inset-y-2 celular:-right-36'>
                   <Link href="/search">
@@ -79,7 +79,7 @@ export default function Search() {
 
           </div>
 
-          <div className='flex items-center'>
+          <div className='flex items-center z-[-1]'>
             <Image src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
               alt="home image" width={340} height={270} />
           </div>

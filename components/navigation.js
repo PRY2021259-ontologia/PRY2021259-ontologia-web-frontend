@@ -1,33 +1,30 @@
 import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from "@fortawesome/free-regular-svg-icons"
-
-var button = null
-var menu = null
-
-if (typeof document !== 'undefined') {
-  button = document.querySelector('#button.mobile-menu-button');
-  menu = document.querySelector('#mobile-menu');
-}
-
-if (button && menu) {
-  button.addEventListener('click', () => {
-    console.log('clickeado');
-    menu.classList.toggle('hidden');
-  });
-}
-
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
+import { useSession, signOut } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 export default function Navigation() {
+
+  let [open, setOpen] = useState(false);
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  if (status === 'Unaunthenticated' && session === null) {
+    router.push('/login')
+  }
+
   return (
-    <nav className="inset-x-0 sticky top-0 z-10 shadow-md md:justify-center items-center bg-white celular:text-sm md:text-base">
-      <div className="flex-row py-4 md:w-2/3 mx-auto celular:px-6">
+    <nav className="inset-x-0 sticky top-0  shadow-md md:justify-center items-center celular:text-sm md:text-base">
+      <div className="flex-row py-4 md:w-2/3 mx-auto celular:px-6 z-50 bg-white">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row md:space-x-10">
             <a href="/" className="flex items-center">
-              <img className=" md:w-10 md:h-10" src="/Mark.svg" alt="Logo" />
+              <img className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
             </a>
-            <div className="flex items-center">
+            <div className="celular:hidden md:flex items-center">
               <div>
                 <Link href="/assistedsearch">
                   <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Busqueda guiada</a>
@@ -45,7 +42,7 @@ export default function Navigation() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row items-center celular:space-x-1 md:space-x-6">
+          <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
             <div>
               <Link href="/login">
                 <button className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
@@ -62,50 +59,74 @@ export default function Navigation() {
             </div>
           </div>
           <div className="md:hidden flex items-center">
-            <button className="outline-none" id="mobile-menu-button">
-              <svg
-                className="w-10 h-10 text-gray-500"
-                x-show="!showMenu"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
+            <button onClick={() => setOpen(!open)} className="outline-none focus:bg-gray-300 rounded-md w-9 h-9">
+              <FontAwesomeIcon icon={open ? faXmark : faBars} size='2x' className="text-gray-500" />
             </button>
           </div>
         </div>
       </div>
-      <div className="hidden rounded-lg shadow-lg" id="mobile-menu">
-        <div className="block px-6">
-          <div className="pb-3">
-            <Link href="/suggestions">
-              <a className=" hover:bg-gray-100 text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
-            </Link>
-          </div>
-          <div className="pb-3">
-            <Link href="/definitionshistory">
-              <a className=" hover:bg-gray-100 text-bluepotato py-1 rounded-md font-medium">Historial</a>
-            </Link>
-          </div>
-          <div className="flex flex-row pb-3 justify-between items-center py-1">
-            <div className="flex flex-row space-x-3">
-              <img className="rounded-full" src="https://picsum.photos/40" />
-              <div className="flex flex-col ">
-                <p>Sebastian Alfaro</p>
-                <p className="text-gray-600">sebas43243@hotmail.com</p>
+      <div className={`md:hidden w-full bg-white rounded-lg shadow-lg text-base transition-all duration-300 ease-in absolute z-[-1]  ${open ? 'top-[67px]' : 'top-[-300px]'}`}>
+        {
+          session ? (
+            <div>
+              <div className="py-2 px-6 hover:bg-gray-200 duration-500">
+                <Link href="/suggestions">
+                  <a className="text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
+                </Link>
+              </div>
+              <div className="py-2 px-6 hover:bg-gray-200 duration-500">
+                <Link href="/definitionshistory">
+                  <a className="text-bluepotato py-1 rounded-md font-medium">Historial</a>
+                </Link>
+              </div>
+              <div className="flex flex-row pb-2 justify-between items-center py-2 px-6 hover:bg-gray-200 duration-500">
+                <div className="flex flex-row space-x-3">
+                  <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                  <div className="flex flex-col ">
+                    <p>{session.user.name}</p>
+                    <p className="text-gray-600">{session.user.email}</p>
+                  </div>
+                </div>
+                <div className="fa-xl text-gray-400">
+                  <FontAwesomeIcon icon={faBell} />
+                </div>
+              </div>
+              <div className="py-2 px-6 hover:bg-gray-200 duration-500">
+                <Link href="#">
+                  <a className="text-gray-500 py-1 rounded-md font-medium">Perfil</a>
+                </Link>
+              </div>
+              <div onClick={() => signOut()} className="py-3 px-6 hover:bg-gray-200 duration-500">
+                <Link href="/login">
+                  <a className="text-gray-500 py-1 rounded-md font-medium">Salir</a>
+                </Link>
               </div>
             </div>
-            <div className="fa-xl text-gray-400">
-              <FontAwesomeIcon icon={faBell} />
+          ) : (
+            <div>
+              <div className="py-2 px-6 hover:bg-gray-200 duration-500">
+                <Link href="/suggestions">
+                  <a className="text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
+                </Link>
+              </div>
+              <div className="py-2 px-6 hover:bg-gray-200 duration-500">
+                <Link href="/assitedsearch">
+                  <a className="text-bluepotato py-1 rounded-md font-medium">Búsqueda guiada</a>
+                </Link>
+              </div>
+              <div className="py-2 px-6 duration-500 text-center">
+                <Link href="/login">
+                  <a className="text-gray-500 py-1 rounded-md font-medium">Inicia sesión</a>
+                </Link>
+              </div>
+              <div className="py-3 px-6 bg-bluepotato duration-500 text-center">
+                <Link href="/register">
+                  <a className="text-white py-1 rounded-md font-medium">Regístrate</a>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="pb-3"><a className=" hover:bg-gray-100 text-gray-500 py-1 rounded-md font-medium">Perfil</a></div>
-          <div className="pb-4"><a className=" hover:bg-gray-100 text-gray-500 py-1 rounded-md font-medium">Salir</a></div>
-        </div>
+          )
+        }
       </div>
     </nav >
   )
