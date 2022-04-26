@@ -9,6 +9,6 @@ module.exports = {
   images: {
     domains: ['images.squarespace-cdn.com', 'images.unsplash.com', 'blush.design'],
   },
-  BASE_URL: 'https://backend-ontologia.azurewebsites.net/',
+  BASE_URL: 'https://backend-ontologia.azurewebsites.net/api/',
   //BASE_URL: 'http://localhost:5000/'
 }

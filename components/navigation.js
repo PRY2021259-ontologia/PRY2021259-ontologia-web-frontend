@@ -17,55 +17,103 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="inset-x-0 sticky top-0  shadow-md md:justify-center items-center celular:text-sm md:text-base">
-      <div className="flex-row py-4 md:w-2/3 mx-auto celular:px-6 z-50 bg-white">
-        <div className="flex flex-row justify-between">
-          <div className="flex flex-row md:space-x-10">
-            <a href="/" className="flex items-center">
-              <img className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
-            </a>
-            <div className="celular:hidden md:flex items-center">
-              <div>
-                <Link href="/assistedsearch">
-                  <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Busqueda guiada</a>
-                </Link>
-              </div>
-              <div>
-                <Link href="/suggestions">
-                  <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
-                </Link>
-              </div>
-              <div>
-                <Link href="/definitionshistory">
-                  <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Historial</a>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
+    <nav className="inset-x-0 sticky z-[4] top-0 shadow-md md:justify-center items-center celular:text-sm md:text-base ">
+      <div className="flex-row sticky z-[4] py-4 md:w-2/3 mx-auto celular:px-6 bg-white ">
+        {
+          session ? (
             <div>
-              <Link href="/login">
-                <button className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
-                  Inicia sesión
-                </button>
-              </Link>
+              <div className="flex flex-row justify-between z-[3]">
+                <div className="flex flex-row md:space-x-10">
+                  <a href="/" className="flex items-center">
+                    <img className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
+                  </a>
+                  <div className="celular:hidden md:flex items-center md:space-x-10">
+                    <div>
+                      <Link href="/assistedsearch">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Busqueda guiada</a>
+                      </Link>
+                    </div>
+                    <div>
+                      <Link href="/suggestions">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
+                      </Link>
+                    </div>
+                    <div>
+                      <Link href="/definitionshistory">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Historial</a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
+                  <div>
+                    <div className="fa-xl text-gray-800">
+                      <FontAwesomeIcon icon={faBell} />
+                    </div>
+                  </div>
+                  <button onClick={() => signOut()}>
+                    <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                  </button>
+                </div>
+                <div className="md:hidden flex items-center">
+                  <button onClick={() => setOpen(!open)} className="outline-none focus:bg-gray-300 rounded-md w-9 h-9">
+                    <FontAwesomeIcon icon={open ? faXmark : faBars} size='2x' className="text-gray-500" />
+                  </button>
+                </div>
+              </div>
             </div>
+          ) : (
             <div>
-              <Link href="/register">
-                <button className="flex justify-center items-center text-white hover:bg-bluepotatohover h-8 rounded-md w-28 bg-bluepotato font-medium">
-                  Regístrate
-                </button>
-              </Link>
+              <div className="flex flex-row justify-between z-[3]">
+                <div className="flex flex-row md:space-x-10">
+                  <a href="/" className="flex items-center">
+                    <img className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
+                  </a>
+                  <div className="celular:hidden md:flex items-center">
+                    <div>
+                      <Link href="/assistedsearch">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Busqueda guiada</a>
+                      </Link>
+                    </div>
+                    <div>
+                      <Link href="/suggestions">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
+                      </Link>
+                    </div>
+                    <div>
+                      <Link href="/definitionshistory">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Historial</a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
+                  <div>
+                    <Link href="/login">
+                      <button className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
+                        Inicia sesión
+                      </button>
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/register">
+                      <button className="flex justify-center items-center text-white hover:bg-bluepotatohover h-8 rounded-md w-28 bg-bluepotato font-medium">
+                        Regístrate
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="md:hidden flex items-center">
+                  <button onClick={() => setOpen(!open)} className="outline-none focus:bg-gray-300 rounded-md w-9 h-9">
+                    <FontAwesomeIcon icon={open ? faXmark : faBars} size='2x' className="text-gray-500" />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setOpen(!open)} className="outline-none focus:bg-gray-300 rounded-md w-9 h-9">
-              <FontAwesomeIcon icon={open ? faXmark : faBars} size='2x' className="text-gray-500" />
-            </button>
-          </div>
-        </div>
+          )
+        }
       </div>
-      <div className={`md:hidden w-full bg-white rounded-lg shadow-lg text-base transition-all duration-300 ease-in absolute z-[-1]  ${open ? 'top-[67px]' : 'top-[-300px]'}`}>
+      <div className={`md:hidden w-full bg-white rounded-lg shadow-lg text-base transition-all duration-300 ease-in fixed z-[3]  ${open ? 'top-[67px]' : 'top-[-300px]'}`}>
         {
           session ? (
             <div>

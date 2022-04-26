@@ -3,12 +3,77 @@ import Description from '../components/description'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import router, { useRouter } from 'next/router'
+import UserApiService from '../service/users-service'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 
 export default function Register() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const myfunc = (data) => {
-    alert(data.name + ' ' + data.lastname);
+  //const onSubmit = (data) => {
+  //alert(JSON.stringify(data));
+  //}
+
+
+  //function submit(e) {
+  // e.preventDefault();
+  // axios.post('https://backend-ontologia.azurewebsites.net/api/users', user)
+  // .then(res => {
+  //   console.log(res.user)
+  //  })
+  // }
+
+  //function componentDidMount() {
+  //const user = { name: '', email: '', password: '' }
+  //axios.post('https://backend-ontologia.azurewebsites.net/api/users', user)
+  //.then(response => this.setState({ user: response.data.id }));
+  //};
+
+  //function handle(e) {
+  // const newuser = { ...user }
+  //newuser[e.target.id] = e.target.value
+  //setUser(newuser)
+  ///console.log(newuser)
+  //}
+
+  //useEffect(() => {
+  //const user = { name: '', lastName: '', email: '', password: '' };
+  //axios.post('https://backend-ontologia.azurewebsites.net/api/users', user)
+  //.then(res => setUserId(res.data.id));
+
+  //const user = {
+  // method: 'POST',
+  // headers: { 'Content-Type': 'application/json' },
+  // body: JSON.stringify({ name: 'Pedro', lastName: 'Alfaro', email: 'sebas43243@hotmail.com', password: '123456' })
+  //};
+  // fetch('https://backend-ontologia.azurewebsites.net/api/users', user)
+  //.then(response => response.json())
+  //.then(data => setUserId(data.id));
+  //}, []);
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+  async function onSubmitForm(values) {
+    let config = {
+      method: 'POST',
+      url: 'https://backend-ontologia.azurewebsites.net/api/users',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: values,
+    };
+
+    try {
+      const response = await axios(config);
+      if (response.status == 200) {
+        reset()
+        router.push('/login')
+        //console.log('Success');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -31,38 +96,68 @@ export default function Register() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit(myfunc)} className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 md:w-2/5 h-full celular:w-full'>
+          <form onSubmit={handleSubmit(onSubmitForm)} className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 md:w-2/5 h-full celular:w-full'>
             <div>
               <div className='py-2'>
                 <label htmlFor='name' className='flex flex-row py-1 text-gray-700'>Nombres</label>
-                <input {...register('name', { required: true })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="text" />
+                <input
+                  {...register('name', { required: true })}
+                  name="name"
+                  className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                  type="text"
+                />
                 {errors.name && errors.name.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su nombre</span>}
               </div>
               <div className='py-2'>
-                <label htmlFor='lastname' className='flex flex-row py-1 text-gray-700'>Apellidos</label>
-                <input {...register('lastname', { required: true })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="text" />
-                {errors.lastname && errors.lastname.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su apellido</span>}
+                <label htmlFor='lastName' className='flex flex-row py-1 text-gray-700'>Apellidos</label>
+                <input
+                  {...register('lastName', { required: true })}
+                  name="lastName"
+                  className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                  type="text"
+                />
+                {errors.lastName && errors.lastName.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su apellido</span>}
               </div>
               <div className='py-2'>
                 <label htmlFor='email' className='flex flex-row py-1 text-gray-700'>Correo</label>
-                <input {...register('email', { required: true })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="email" />
+                <input
+                  {...register('email', { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
+                  name="email"
+                  className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                  type="email"
+                />
                 {errors.email && errors.email.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su correo</span>}
               </div>
               <div className='py-2'>
                 <label htmlFor='password' className='flex flex-row py-1 text-gray-700'>Contraseña</label>
-                <input {...register('password', { required: true, minLength: 5 })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="password" />
+                <input
+                  {...register('password', { required: true, minLength: 5 })}
+                  name="password"
+                  className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                  type="password"
+                />
                 {errors.password && errors.password.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su contraseña</span>}
                 {errors.password && errors.password.type === 'minLength' && <span className='text-red-600 text-sm font-normal'>La contraseña debe contener por lo menos 5 caracteres</span>}
               </div>
               <div className='py-2'>
-                <label htmlFor='password2' className='flex flex-row py-1 text-gray-700'>Repetir contraseña</label>
-                <input {...register('password2', { required: true, minLength: 5 })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="password" />
+                <label htmlFor='confirmPassword' className='flex flex-row py-1 text-gray-700'>Repetir contraseña</label>
+                <input
+                  {...register('confirmPassword', { required: true, minLength: 5 })}
+                  name="confirmPassword"
+                  className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                  type="password"
+                />
                 {errors.password2 && errors.password2.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor vuelva a ingresar su contraseña</span>}
                 {errors.password2 && errors.password2.type === 'minLength' && <span className='text-red-600 text-sm font-normal'>La contraseña debe contener por lo menos 5 caracteres</span>}
               </div>
               <div className='py-2'>
                 <label htmlFor='date' className='flex flex-row py-1 text-gray-700'>Fecha de nacimiento</label>
-                <input {...register('date', { required: true })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10" type="date" />
+                <input
+                  {...register('date', { required: true })}
+                  name="date"
+                  className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                  type="date"
+                />
                 {errors.date && errors.date.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese una fecha</span>}
               </div>
               <div className='py-2'>
@@ -77,7 +172,10 @@ export default function Register() {
               </div>
               <div className='flex flex-col justify-between py-2'>
                 <label htmlFor='conditions' className='text-gray-800 font-normal'>
-                  <input {...register('conditions', { required: true })} type="checkbox" /> Aceptar los <a className='hover:underline text-bluepotato' href='https://www.privacypolicies.com/live/be4d3db6-a44b-4c49-be03-9e2df14e122a' target="_blank" rel="noreferrer noopener">términos y condiciones</a></label>
+                  <input
+                    {...register('conditions', { required: true })}
+                    type="checkbox"
+                  /> Aceptar los <a className='hover:underline text-bluepotato' href='https://www.privacypolicies.com/live/be4d3db6-a44b-4c49-be03-9e2df14e122a' target="_blank" rel="noreferrer noopener">términos y condiciones</a></label>
                 {errors.conditions && errors.conditions.type === 'required' && <span className='text-red-600 text-sm font-normal'>Acepte los terminos y condiciones</span>}
               </div>
               <div className='py-5'>
@@ -95,3 +193,4 @@ export default function Register() {
     </div>
   )
 }
+
