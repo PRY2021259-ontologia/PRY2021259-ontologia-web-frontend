@@ -31,9 +31,9 @@ export default function Details({ plant }) {
 
           <div className='flex md:flex-row md:w-full md:justify-between celular:flex-col items-center'>
             <div className='flex flex-col md:w-1/2'>
-              <h1 className='text-3xl px-10 pt-5 font-medium'>{plant.name}</h1>
+              <h1 className='text-3xl px-10 pt-5 font-medium'>{plant.plantDiseaseName}</h1>
               <div className=' px-10 py-5 '>
-                <p>{plant.description}</p>
+                <p>{plant.plantDiseaseDescription}</p>
               </div>
             </div>
             <div className='flex md:flex-row celular:flex-col-reverse md:justify-between items-center h-72 shadow-lg rounded-xl w-1/2 m-6 celular:p-5 md:p-20'>

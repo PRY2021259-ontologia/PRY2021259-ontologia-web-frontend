@@ -52,6 +52,8 @@ export default function Register() {
   //.then(data => setUserId(data.id));
   //}, []);
 
+  //const { data } = await axios.post('https://backend-ontologia.azurewebsites.net/api/users', { email, password });
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   async function onSubmitForm(values) {

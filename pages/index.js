@@ -47,7 +47,7 @@ export default function Index({ categorys, plants }) {
             <div key={category.id} className='flex flex-col celular:w-full md:w-64'>
               <p className='celular:text-center md:text-left font-medium'> {category.categoryDiseaseName}</p>
               {plants.map((plant) => (
-                <div key={category.id/plant.id} className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 celular:w-full md:w-64 h-22 celular:justify-center z-[-50]'>
+                <div key={plant.id} className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 celular:w-full md:w-64 h-22 celular:justify-center z-[-50]'>
                   <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                     alt="avatar" width={55} height={42} className="rounded" />
                   <div className="flex items-center px-6">
@@ -75,10 +75,17 @@ export const getStaticProps = async () => {
   const data = await cat.json();
   const data2 = await plat.json();
 
+  const categories = JSON.parse(JSON.stringify(data));
+  const plants = JSON.parse(JSON.stringify(data2));
+
+  const dataMerged = { categories, plants };
+  console.log(dataMerged);
+
   return {
     props: {
       categorys: data,
-      plants: data2
+      plants: data2,
+      datamerged: dataMerged
     },
   }
 }

@@ -31,8 +31,8 @@ export default function Search({ plants }) {
               {plants.map((plant) => (
                 <div key={plant.id} className='relative shadow-md shadow-gray-400 rounded-lg  celular:w-[260px] md:w-[370px] celular:h-[200px] md:h-48'>
                   <div className=' px-6 pt-2.5'>
-                    <h1 className='text-gray-900 text-xl font-medium'>{plant.name}</h1>
-                    <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.description}</p>
+                    <h1 className='text-gray-900 text-xl font-medium'>{plant.plantDiseaseName}</h1>
+                    <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.plantDiseaseDescription}</p>
                   </div>
                   <div className='absolute celular:w-[260px] md:w-[370px] bottom-0 items-center h-10 px-6 py-1.5 rounded-b-lg bg-whiteresultado'>
                     <Link href={'/search/' + plant.id} key={plant.id}>

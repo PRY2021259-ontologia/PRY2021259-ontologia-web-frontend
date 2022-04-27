@@ -2,6 +2,7 @@ import Footer from '../components/footer'
 import Navigation from '../components/navigation'
 import Description from '../components/description'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 import { useState } from 'react'
 import UserSuggestionsApiService from '../service/user-suggestions-services'
 
@@ -31,8 +32,30 @@ export default function Suggestions() {
   //console.log(newsuggestion)
   //}
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  //const baseURL =process.env.URL_LOCAL;
 
+  async function onSubmitForm(values) {
+    let config = {
+      method: 'POST',
+      url: 'https://backend-ontologia.azurewebsites.net/api/usersuggestions',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: values,
+    };
+
+    try {
+      const response = await axios(config);
+      if (response.status == 200) {
+        reset();
+        console.log('Sugerencia enviada con éxito');
+        alert('Sugerencia enviada con éxito');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div>
@@ -50,28 +73,27 @@ export default function Suggestions() {
             </div>
             <div className=' md:w-1/2 celular:pb-6 md:pb-0'>
 
-              <form onSubmit={(e) => { submit(e) }}>
+              <form onSubmit={handleSubmit(onSubmitForm)}>
                 <div className='py-2'>
                   <label htmlFor='fullname' className='flex flex-row py-1 text-gray-700'>Nombre completo</label>
                   <input
                     {...register('fullname', { required: true })}
                     className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
+                    name="fullname"
                     type="text"
                   />
                   {errors.fullname && errors.fullname.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su nombre completo</span>}
                 </div>
 
                 <div className='py-2'>
-                  <label htmlFor='email' className='flex flex-row py-1 text-gray-700'>Correo</label>
+                  <label htmlFor='optionalEmail' className='flex flex-row py-1 text-gray-700'>Correo</label>
                   <input
-                    {...register('email', { required: true })}
-                    onChange={(e) => handle(e)}
-                    id="optionalEmail"
-                    value={suggestion.optionalEmail}
+                    {...register('optionalEmail', { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
+                    name="optionalEmail"
                     className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
                     type="email"
                   />
-                  {errors.email && errors.email.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su correo</span>}
+                  {errors.optionalEmail && errors.optionalEmail.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su correo</span>}
                 </div>
 
                 <div className='py-2'>
@@ -79,20 +101,18 @@ export default function Suggestions() {
                   <input
                     {...register('phone', { required: true })}
                     className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
-                    type="tel"
+                    name="phone"
+                    type="number"
                   />
                   {errors.phone && errors.phone.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su numero</span>}
                 </div>
 
                 <div className='py-2'>
-                  <label htmlFor='text' className='flex flex-row py-1 text-gray-700'>Sugerencia</label>
+                  <label htmlFor='comment' className='flex flex-row py-1 text-gray-700'>Sugerencia</label>
                   <textarea
-                    {...register('text', { required: true })}
-                    onChange={(e) => handle(e)}
-                    id="comment"
-                    value={suggestion.comment}
+                    {...register('comment', { required: true })}
                     className='w-full rounded-md px-3 py-1 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600'
-                    name="textarea"
+                    name="comment"
                     rows="10"
                     cols="50"
                   />
