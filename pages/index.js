@@ -5,8 +5,10 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-export default function Index({ categorys, plants }) {
+export default function Index({ categories, plants, plantCategories }) {
 
   return (
     <div>
@@ -43,15 +45,15 @@ export default function Index({ categorys, plants }) {
         </div>
 
         <div className='flex celular:flex-col celular:mx-8 md:flex-row celular:items-center md:items-start justify-around py-4 celular:text-lg md:text-base '>
-          {categorys.map((category) => (
-            <div key={category.id} className='flex flex-col celular:w-full md:w-64'>
-              <p className='celular:text-center md:text-left font-medium'> {category.categoryDiseaseName}</p>
-              {plants.map((plant) => (
-                <div key={plant.id} className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 celular:w-full md:w-64 h-22 celular:justify-center z-[-50]'>
+          {categories.map(categorie => (
+            <div key={categorie.id} className='flex flex-col celular:w-full md:w-64'>
+              <p className='celular:text-center md:text-left font-medium'> {categorie.categoryDiseaseName}</p>
+              {plantCategories.map(plantCategorie => (
+                <div key={plantCategorie.id} className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 celular:w-full md:w-64 h-22 celular:justify-center z-[-50]'>
                   <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                     alt="avatar" width={55} height={42} className="rounded" />
                   <div className="flex items-center px-6">
-                    <p className='celular:text-lg md:text-sm '>{plant.plantDiseaseName}</p>
+                    <p className='celular:text-lg md:text-sm '>{plantCategorie.plantDiseaseName}</p>
                   </div>
                 </div>
               ))}
@@ -65,27 +67,50 @@ export default function Index({ categorys, plants }) {
   )
 }
 
+/*
+const [plants, setPlants] = useState({});
+const [categoryId, setCategoryId] = useState(1);
 
-export const getStaticProps = async () => {
+useEffect(() => {
+  axios.get('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId + '/plantdiseases')
+    .then(res => {
+      console.log(res)
+      setPlants(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}, [])
+*/
 
-  //const id = context.params.id;
-  const cat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases');
-  const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/');
+export const getStaticProps = async (context) => {
+
+  const cat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases')
+  //const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/');
 
   const data = await cat.json();
-  const data2 = await plat.json();
+  //const data2 = await plat.json();
 
-  const categories = JSON.parse(JSON.stringify(data));
-  const plants = JSON.parse(JSON.stringify(data2));
+  const categoryId = data.map(function (item) {
+    return item.id;
+  });
 
-  const dataMerged = { categories, plants };
-  console.log(dataMerged);
+  const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[0] + '/plantdiseases')
+  const plantCategory = await plantCat.json();
+  //const categories = JSON.parse(JSON.stringify(data));
+  //const plants = JSON.parse(JSON.stringify(data2));
+  //const plantCategorys = JSON.parse(JSON.stringify(plantCategory));
+
+  for (const plantId of categoryId) {
+    console.log(plantId);
+  }
 
   return {
     props: {
-      categorys: data,
-      plants: data2,
-      datamerged: dataMerged
+      categories: data,
+      //plants: data2,
+      plantCategories: plantCategory
+      //plantCategoryId: plantCategoryId
     },
   }
 }
