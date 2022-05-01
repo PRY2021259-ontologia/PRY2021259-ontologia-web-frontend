@@ -8,6 +8,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { baseUrl } from '../service/api'
 
 
 export default function Login() {
@@ -20,41 +21,18 @@ export default function Login() {
   }
 
   const { register, handleSubmit, formState: { errors } } = useForm();
-  //const myfunc = (data) => {
-  ///  alert(data.email);
-  //}
-
-  /* function handleSubmit(e) {
-    axios.get('https://backend-ontologia.azurewebsites.net/api/users')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson.results[0].login.username, myJson.results[0].login.password);
-      }
-      );
-  } */
 
   async function onSubmitForm(values) {
-    let config = {
-      method: 'POST',
-      url: 'https://backend-ontologia.azurewebsites.net/api/users',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: values,
-    };
+    const { username } = values;
+    const listUserLogin = await baseUrl.get('/userlogins')
+    const isUserRegistered = listUserLogin.data.find(user => user.username === username)
+    const listUser = await baseUrl.get('/users')
+    const isUser = listUser.data.find(user => user.email === username)
 
-    try {
-      const response = await axios(config);
-      if (response.status == 200) {
-        reset()
-        router.push('/login')
-        //console.log('Success');
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    if (!isUserRegistered || !isUser) return;
+
+    localStorage.setItem('username', JSON.stringify(isUser))
+    router.push('/')
   }
 
   return (

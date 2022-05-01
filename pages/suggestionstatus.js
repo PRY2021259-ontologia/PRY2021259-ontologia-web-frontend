@@ -1,8 +1,28 @@
 import Footer from '../components/footer'
 import Navigation from '../components/navigation'
 import Description from '../components/description'
+import { useEffect, useState } from 'react'
+import { baseUrl } from '../service/api'
+import dayjs from 'dayjs'
 
 export default function suggestionstatus() {
+
+    const [date, setDate] = useState('')
+
+    useEffect(() => {
+        const listSuggestionsUserById = async () => {
+            const user = JSON.parse(localStorage.getItem('username'));
+            if (!user) return
+            const result = await baseUrl.get(`/users/${user.id}/usersuggestions`)
+            if (result.status === 200) {
+                if (result.data.length > 0) {
+                    const getDate = dayjs(result.data.pop().createdOn).format('MMM D, YYYY')
+                    setDate(getDate)
+                }
+            }
+        }
+        listSuggestionsUserById()
+    }, [])
     return (
         <div>
 
@@ -16,12 +36,15 @@ export default function suggestionstatus() {
                     <div className='flex celular:flex-col md:flex-row justify-between'>
                         <div className='flex flex-row justify-between'>
                             <div className='flex flex-col celular:space-y-20 md:space-y-16 celular:py-10 md:py-20 px-6'>
-                                <img src="/rectangle.png" alt="rectangle" />
-                                <img src="/rectangle.png" alt="rectangle" />
-                                <img src="/rectangle.png" alt="rectangle" />
+                                {
+                                    date ? <img src="/rectangle.png" alt="rectangle" />
+                                        : <img src="/emptyRectangle.svg" alt="rectangle" />
+                                }
+                                <img src="/emptyRectangle.svg" alt="rectangle" />
+                                <img src="/emptyRectangle.svg" alt="rectangle" />
                             </div>
                             <div className='flex flex-col celular:space-y-7 md:space-y-20 celular:py-10 md:py-20 '>
-                                <h1 className='text-gray-900 text-xl font-medium'>Recibido el 02 de marzo</h1>
+                                <h1 className='text-gray-900 text-xl font-medium'>Recibido el {date ? date : '02 de marzo'}</h1>
                                 <h1 className='text-gray-900 text-xl font-medium'>Sugerencia Revisada y agregada</h1>
                                 <h1 className='text-gray-900 text-xl font-medium'>Implementado</h1>
                             </div>

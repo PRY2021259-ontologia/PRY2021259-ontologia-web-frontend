@@ -4,78 +4,39 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import router, { useRouter } from 'next/router'
-import UserApiService from '../service/users-service'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { baseUrl } from '../service/api'
+import { Alerting } from '../utils/alert'
 
 
 export default function Register() {
-
-  //const onSubmit = (data) => {
-  //alert(JSON.stringify(data));
-  //}
-
-
-  //function submit(e) {
-  // e.preventDefault();
-  // axios.post('https://backend-ontologia.azurewebsites.net/api/users', user)
-  // .then(res => {
-  //   console.log(res.user)
-  //  })
-  // }
-
-  //function componentDidMount() {
-  //const user = { name: '', email: '', password: '' }
-  //axios.post('https://backend-ontologia.azurewebsites.net/api/users', user)
-  //.then(response => this.setState({ user: response.data.id }));
-  //};
-
-  //function handle(e) {
-  // const newuser = { ...user }
-  //newuser[e.target.id] = e.target.value
-  //setUser(newuser)
-  ///console.log(newuser)
-  //}
-
-  //useEffect(() => {
-  //const user = { name: '', lastName: '', email: '', password: '' };
-  //axios.post('https://backend-ontologia.azurewebsites.net/api/users', user)
-  //.then(res => setUserId(res.data.id));
-
-  //const user = {
-  // method: 'POST',
-  // headers: { 'Content-Type': 'application/json' },
-  // body: JSON.stringify({ name: 'Pedro', lastName: 'Alfaro', email: 'sebas43243@hotmail.com', password: '123456' })
-  //};
-  // fetch('https://backend-ontologia.azurewebsites.net/api/users', user)
-  //.then(response => response.json())
-  //.then(data => setUserId(data.id));
-  //}, []);
-
-  //const { data } = await axios.post('https://backend-ontologia.azurewebsites.net/api/users', { email, password });
-
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   async function onSubmitForm(values) {
-    let config = {
-      method: 'POST',
-      url: 'https://backend-ontologia.azurewebsites.net/api/users',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: values,
-    };
 
-    try {
-      const response = await axios(config);
-      if (response.status == 200) {
-        reset()
-        router.push('/login')
-        //console.log('Success');
-      }
-    } catch (error) {
-      console.error(error);
+    const { name, lastName, email, password } = values;
+
+    const listUser = await baseUrl.get('/users');
+    const existUser = listUser.data.find(user => user.email === email);
+
+    if (existUser) {
+      Alerting({
+        title: 'Usuario Repetido',
+        message: 'El usuario ya existe',
+        type: 'error',
+        icon: 'error'
+      });
+      return
     }
+
+    await baseUrl.post('/users', { name, lastName, email });
+    await baseUrl.post('/userlogins', { username: email, password });
+    Alerting({
+      title: 'Registro Exitoso',
+      message: 'Por favor iniciar sesión',
+      type: 'success',
+      icon: 'success'
+    });
+    router.push('/login');
   }
 
   return (

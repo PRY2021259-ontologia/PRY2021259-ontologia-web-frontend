@@ -4,9 +4,37 @@ import Footer from '../components/footer'
 import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { baseUrl } from '../service/api';
+import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
+import { Alerting } from '../utils/alert';
 
 export default function Search({ plants }) {
+  const router = useRouter()
+  const { data: session, status } = useSession()
+  const goSearch = async (id, name) => {
+    const user = JSON.parse(localStorage.getItem('username'))
+    if (!user) {
+      router.push(`/search/${id}`)
+      // Alerting({
+      //   title: 'Error',
+      //   message: 'Debes iniciar sesión para poder realizar esta acción',
+      //   type: 'error',
+      //   icon: 'error'
+      // })
+      // router.push('/login')
+      return
+    }
+    const saveHistory = await baseUrl.post('/userhistories', {
+      url: `/plant/${id}`,
+      textSearched: name
+    })
 
+    if (saveHistory.status === 200) {
+      await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
+      router.push(`/search/${id}`)
+    }
+  }
   return (
     <div>
       <Description />
@@ -35,9 +63,9 @@ export default function Search({ plants }) {
                     <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.plantDiseaseDescription}</p>
                   </div>
                   <div className='absolute celular:w-[260px] md:w-[370px] bottom-0 items-center h-10 px-6 py-1.5 rounded-b-lg bg-whiteresultado'>
-                    <Link href={'/search/' + plant.id} key={plant.id}>
-                      <a className='text-indigo-700 hover:underline'>Ver detalles →</a>
-                    </Link>
+                    {/* <Link href={'/search/' + plant.id} key={plant.id}> */}
+                    <a onClick={() => goSearch(plant.id, plant.plantDiseaseName)} className='text-indigo-700 hover:underline hover:cursor-pointer'>Ver detalles →</a>
+                    {/* </Link> */}
                   </div>
                 </div>
               ))}

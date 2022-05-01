@@ -7,9 +7,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useSession } from 'next-auth/react'
+import { baseUrl } from '../service/api'
 
 export default function Index({ categories, plants, plantCategories }) {
+  const { data: session, status } = useSession()
 
+  useEffect(async () => {
+    if (!session) return
+    const listUser = await baseUrl.get('/users')
+    const existUser = listUser.data.find(user => user.email === session.user?.email)
+    localStorage.setItem('username', JSON.stringify(existUser))
+    if (existUser) return
+    const registerUser = await baseUrl.post('/users', {
+      email: session.user.email,
+      name: session.user.name,
+      lastName: session.user.name,
+    })
+    if (registerUser.status === 200) {
+      localStorage.setItem('username', JSON.stringify(registerUser.data))
+    }
+  }, [session])
   return (
     <div>
 
@@ -60,10 +78,28 @@ export default function Index({ categories, plants, plantCategories }) {
             </div>
           ))}
         </div>
+        {/*  
+        </main>
+        </div><table className='justify-center w-full'>
+          <tr className=''>
+            {categories.map(categorie => (
+              <th className='celular:w-full md:w-64' key={filterByCategory(categorie.id)}>{categorie.categoryDiseaseName}</th>
+            ))}
+          </tr>
+          <td className='flex flex-col'>
+            {plantCategories.map(plantCategorie => (
+              <th className='celular:text-lg md:text-sm' key={plantCategorie.id}>{plantCategorie.plantDiseaseName}</th>
+            ))}
+          </td>
+        </table>*/}
+        <table className='justify-center w-full'
+          categorie={plantCategories}
+          col_labels={['Categoría', 'Planta']} />
+
       </main>
 
       <Footer />
-    </div>
+    </div >
   )
 }
 
@@ -86,30 +122,55 @@ useEffect(() => {
 export const getStaticProps = async (context) => {
 
   const cat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases')
-  //const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/');
-
   const data = await cat.json();
+
+  //const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/');
   //const data2 = await plat.json();
 
   const categoryId = data.map(function (item) {
     return item.id;
   });
 
-  const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[0] + '/plantdiseases')
-  const plantCategory = await plantCat.json();
+
+  var plantCategories = [];
+  //var mergerdCat = [];
+
+  for (let i = 0; i < categoryId.length; i++) {
+    const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i] + '/plantdiseases')
+    const plantCategory = await plantCat.json();
+    for (let j = 0; j < plantCategory.length; j++) {
+      plantCategory[j] = { ...plantCategory[j], categoryId: categoryId[i] }
+    }
+    //plantCategories.prototype.push.apply(plantCategories, plantCategory);
+    plantCategories = [...plantCategories, ...plantCategory];
+    //const plantCat2 = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i + 1] + '/plantdiseases')
+    //const plantCategory2 = await plantCat2.json();
+    //mergerdCat = plantCategory.concat(plantCategory2);
+    //console.log(plantCategories)
+  }
+  //tengo cateries, aplico filter para devolver por categoria, con la lista de las categories, se hace for para devolver array de la categoria en especifico
+
+  //console.log(plantCategories)
+  function filterByCategory(categoryId) {
+    return plantCategories.filter(plantCategorie => plantCategorie.categoryId === categoryId);
+  }
+
+  let approved = plantCategories.filter(a => a.categoryId === '1b84cf27-2da1-48b8-1d5f-08da27d913e4')
+  //console.log(plantCategories)
+
   //const categories = JSON.parse(JSON.stringify(data));
   //const plants = JSON.parse(JSON.stringify(data2));
   //const plantCategorys = JSON.parse(JSON.stringify(plantCategory));
 
-  for (const plantId of categoryId) {
-    console.log(plantId);
-  }
+  //for (const plantId of categoryId) {
+  //  console.log(plantId);
+  //}
 
   return {
     props: {
       categories: data,
       //plants: data2,
-      plantCategories: plantCategory
+      plantCategories: approved
       //plantCategoryId: plantCategoryId
     },
   }

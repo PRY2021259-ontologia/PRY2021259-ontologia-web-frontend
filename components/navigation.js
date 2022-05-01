@@ -1,8 +1,8 @@
 import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell } from "@fortawesome/free-regular-svg-icons"
+import { faBell, faUser } from "@fortawesome/free-regular-svg-icons"
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
@@ -16,11 +16,28 @@ export default function Navigation() {
     router.push('/login')
   }
 
+  const [isAuth, SetIsAuth] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const signOutLocal = () => {
+    localStorage.removeItem('username')
+    SetIsAuth(false)
+    setUser(null)
+    router.push('/login')
+
+    session && signOut()
+  }
+
+  useEffect(() => {
+    SetIsAuth(localStorage.getItem('username'))
+    setUser(JSON.parse(localStorage.getItem('username')))
+  }, [isAuth])
+
   return (
     <nav className="inset-x-0 sticky z-[4] top-0 shadow-md md:justify-center items-center celular:text-sm md:text-base ">
       <div className="flex-row sticky z-[4] py-4 md:w-2/3 mx-auto celular:px-6 bg-white ">
         {
-          session ? (
+          session || isAuth ? (
             <div>
               <div className="flex flex-row justify-between z-[3]">
                 <div className="flex flex-row md:space-x-10">
@@ -43,6 +60,11 @@ export default function Navigation() {
                         <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Historial</a>
                       </Link>
                     </div>
+                    <div>
+                      <Link href="/definitions">
+                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Conceptos</a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
@@ -51,8 +73,9 @@ export default function Navigation() {
                       <FontAwesomeIcon icon={faBell} />
                     </div>
                   </div>
-                  <button onClick={() => signOut()}>
-                    <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                  <button onClick={() => signOutLocal()}>
+                    {session ? <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                      : <FontAwesomeIcon size="lg" icon={faUser} />}
                   </button>
                 </div>
                 <div className="md:hidden flex items-center">
@@ -115,7 +138,7 @@ export default function Navigation() {
       </div>
       <div className={`md:hidden w-full bg-white rounded-lg shadow-lg text-base transition-all duration-300 ease-in fixed z-[3]  ${open ? 'top-[67px]' : 'top-[-300px]'}`}>
         {
-          session ? (
+          session || isAuth ? (
             <div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
                 <Link href="/suggestions">
@@ -127,12 +150,19 @@ export default function Navigation() {
                   <a className="text-bluepotato py-1 rounded-md font-medium">Historial</a>
                 </Link>
               </div>
+              <div className="py-2 px-6 hover:bg-gray-200 duration-500">
+                <Link href="/definitions">
+                  <a className="text-bluepotato py-1 rounded-md font-medium">Conceptos</a>
+                </Link>
+              </div>
               <div className="flex flex-row pb-2 justify-between items-center py-2 px-6 hover:bg-gray-200 duration-500">
                 <div className="flex flex-row space-x-3">
-                  <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                  {session ? <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                    : <FontAwesomeIcon size="lg" className="rounded-full w-[45px] h-[45px] m-auto" icon={faUser} />}
                   <div className="flex flex-col ">
-                    <p>{session.user.name}</p>
-                    <p className="text-gray-600">{session.user.email}</p>
+                    <p>{session ? session.user.name : user.name}</p>
+                    <p className="text-gray-600">{session ? session.user.email : user.email}</p>
+
                   </div>
                 </div>
                 <div className="fa-xl text-gray-400">
@@ -144,7 +174,7 @@ export default function Navigation() {
                   <a className="text-gray-500 py-1 rounded-md font-medium">Perfil</a>
                 </Link>
               </div>
-              <div onClick={() => signOut()} className="py-3 px-6 hover:bg-gray-200 duration-500">
+              <div onClick={() => signOutLocal()} className="py-3 px-6 hover:bg-gray-200 duration-500">
                 <Link href="/login">
                   <a className="text-gray-500 py-1 rounded-md font-medium">Salir</a>
                 </Link>

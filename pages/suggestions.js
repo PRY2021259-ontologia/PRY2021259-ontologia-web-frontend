@@ -2,60 +2,48 @@ import Footer from '../components/footer'
 import Navigation from '../components/navigation'
 import Description from '../components/description'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
-import { useState } from 'react'
-import UserSuggestionsApiService from '../service/user-suggestions-services'
+import { useEffect, useState } from 'react'
+import { baseUrl } from '../service/api'
+import { Alerting } from '../utils/alert'
+import { useRouter } from 'next/router'
 
 export default function Suggestions() {
 
-  //const onSubmit = (data) => {
-  //alert(JSON.stringify(data));
-  //}
-
-  //const [suggestion, setSuggestion] = useState({
-  //comment: '',
-  //optionalEmail: '',
-  // })
-
-  //function submit(e) {
-  //e.preventDefault();
-  //UserSuggestionsApiService.createNewUserSuggestion(suggestion)
-  //.then(res => {
-  //console.log(res.suggestion)
-  //})
-  //}
-
-  //function handle(e) {
-  // const newsuggestion = { ...suggestion }
-  // newsuggestion[e.target.id] = e.target.value
-  //setSuggestion(newsuggestion)
-  //console.log(newsuggestion)
-  //}
-
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  //const baseURL =process.env.URL_LOCAL;
+  const { register, handleSubmit, formState: { errors }, reset } = useForm()
+  const [user, setUser] = useState({})
+  const router = useRouter()
 
   async function onSubmitForm(values) {
-    let config = {
-      method: 'POST',
-      url: 'https://backend-ontologia.azurewebsites.net/api/usersuggestions',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: values,
-    };
-
+    const saveSuggestion = await baseUrl.post('/usersuggestions', {
+      comment: values.comment,
+      optionalEmail: values.optionalEmail,
+    })
     try {
-      const response = await axios(config);
-      if (response.status == 200) {
+      const assignUser = await baseUrl.post(`/users/${user.id}/usersuggestions/${saveSuggestion.data.id}`)
+      if (assignUser.status === 200) {
         reset();
-        console.log('Sugerencia enviada con éxito');
-        alert('Sugerencia enviada con éxito');
+        Alerting({
+          title: 'Sugerencia enviada',
+          message: 'Gracias por sugerencias',
+          type: 'success',
+          icon: 'success'
+        });
       }
     } catch (error) {
       console.error(error);
     }
   }
+
+  const goSuggestions = async () => {
+    router.push('/suggestionstatus')
+  }
+
+  useEffect(() => {
+    const username = JSON.parse(localStorage.getItem('username'));
+    if (username) {
+      setUser(username);
+    }
+  }, [])
 
   return (
     <div>
@@ -66,7 +54,10 @@ export default function Suggestions() {
 
       <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
         <div className='flex flex-col'>
-          <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-10'>Sugerencias</h1>
+          <div className="flex justify-between">
+            <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-10'>Sugerencias</h1>
+            <a onClick={() => goSuggestions()} className='text-indigo-700 hover:underline hover:cursor-pointer my-auto'>¿Ya haz realizado una sugerencia?</a>
+          </div>
           <div className='flex md:flex-row celular:flex-col justify-between'>
             <div className='py-10'>
               <img src="/remotelife.png" alt="remoteLife" />
@@ -81,6 +72,7 @@ export default function Suggestions() {
                     className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
                     name="fullname"
                     type="text"
+                    value={user.name}
                   />
                   {errors.fullname && errors.fullname.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su nombre completo</span>}
                 </div>
@@ -92,6 +84,7 @@ export default function Suggestions() {
                     name="optionalEmail"
                     className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
                     type="email"
+                    value={user.email}
                   />
                   {errors.optionalEmail && errors.optionalEmail.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su correo</span>}
                 </div>
