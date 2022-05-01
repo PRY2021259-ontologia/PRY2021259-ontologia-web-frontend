@@ -91,10 +91,10 @@ export default function Index({ categories, plants, plantCategories }) {
               <th className='celular:text-lg md:text-sm' key={plantCategorie.id}>{plantCategorie.plantDiseaseName}</th>
             ))}
           </td>
-        </table>*/}
+        </table>
         <table className='justify-center w-full'
           categorie={plantCategories}
-          col_labels={['Categoría', 'Planta']} />
+          col_labels={['Categoría', 'Planta']} />*/}
 
       </main>
 

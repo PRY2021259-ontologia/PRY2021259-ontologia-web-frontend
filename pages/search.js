@@ -26,7 +26,7 @@ export default function Search({ plants }) {
       return
     }
     const saveHistory = await baseUrl.post('/userhistories', {
-      url: `/plant/${id}`,
+      url: `/search/${id}`,
       textSearched: name
     })
 

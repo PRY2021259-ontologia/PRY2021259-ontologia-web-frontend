@@ -9,6 +9,7 @@ export const Alerting = ({ title, message, icon, type }) => {
         text: message,
         icon: icon,
         confirmButtonText: 'OK',
+        confirmButtomColor: "#1E6594",
         type: type
     })
 }

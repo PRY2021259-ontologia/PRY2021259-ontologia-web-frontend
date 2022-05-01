@@ -45,7 +45,6 @@ export default function difinitionshistory() {
         const timestamp = dayjs.utc(date, 'YYYY-MM-DD HH:mm:ss')
         const dateUser = dayjs(timestamp).tz(dayjs.tz.guess())
         return dateUser.format('hh:mm A')
-        //dayjs(date).utc().locale('es').format('hh:mm A')
     }
 
     useEffect(() => {
@@ -82,7 +81,7 @@ export default function difinitionshistory() {
             <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-2/3 min-h-screen">
                 <div className='flex flex-col'>
                     <div className='py-10 '>
-                        <h1 className='font-bold celular:text-4xl md:text-5xl'>Historial de Conceptops</h1>
+                        <h1 className='font-bold celular:text-4xl md:text-5xl'>Historial de Conceptos</h1>
                     </div>
                     <div className='flex celular:flex-col md:flex-row md:space-x-16 celular:mb-6 md:mb-0'>
                         <div className='flex flex-col p-7 shadow-md rounded-lg celular:w-full md:w-1/4 h-1/2 my-2 border'>
@@ -116,7 +115,7 @@ export default function difinitionshistory() {
                                             <div className='flex celular:flex-col md:flex-row md:items-center'>
                                                 <a className='text-yellow-400'><FontAwesomeIcon icon={faStar} size="1x" /></a>
                                                 <h1 className='px-1 font-medium'>{history.textSearched} -</h1>
-                                                <h1 className='flex text-bluedetails py-3 underline'>{process.env.NEXT_PUBLIC_URL_DEPLOY + history.url}</h1>
+                                                <a href={process.env.NEXT_PUBLIC_URL_DEPLOY + history.url} className='flex text-bluedetails py-3 underline'>{process.env.NEXT_PUBLIC_URL_DEPLOY + history.url}</a>
                                             </div>
                                             <h1 className=''>{convertDate(history.createdOn)}</h1>
                                         </div>
