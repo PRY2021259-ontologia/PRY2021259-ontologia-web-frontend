@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+
 export default function Home() {
   return (
     <div >
@@ -16,7 +17,7 @@ export default function Home() {
 
       <main className='mx-auto w-2/3 min-h-screen'>
         <div className='flex flex-row pb-12 pt-20 justify-center'>
-          <img src="/Frame.png" alt="home image" />
+          <Image layout='fill' src="/Frame.png" alt="home image" />
         </div>
 
         <div className='flex flex-row relative justify-center'>
@@ -29,15 +30,15 @@ export default function Home() {
         </div>
 
         <div className='flex flex-row justify-center py-6 space-x-10'>
-          <Link href="/search">
-            <button className="rounded-md hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white font-medium">
+          <Link passHref href="/search">
+            <a href="replace" className="rounded-md hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white font-medium">
               Buscar
-            </button>
+            </a>
           </Link>
-          <Link href="/assistedsearch">
-            <button className="rounded-md hover:bg-bluepotatohover w-48 bg-bluepotato text-white font-medium">
+          <Link passHref href="/assistedsearch">
+            <a href="replace" className="rounded-md hover:bg-bluepotatohover w-48 bg-bluepotato text-white font-medium">
               Ayuda en la búsqueda
-            </button>
+            </a>
           </Link>
         </div>
 

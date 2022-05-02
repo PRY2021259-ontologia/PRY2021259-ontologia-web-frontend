@@ -53,7 +53,7 @@ export default function Register() {
             <div>
               <div className='flex flex-col items-center'>
                 <h1 className='font-extrabold text-3xl py-3'>Regístrate</h1>
-                <p className='font-normal text-gray-600 pb-6'>O <Link href='/login'><button className='text-bluepotato hover:underline'>inicia sesión</button>
+                <p className='font-normal text-gray-600 pb-6'>O <Link passHref href='/login'><a href="replace" className='text-bluepotato hover:underline'>inicia sesión</a>
                 </Link></p>
               </div>
             </div>

@@ -3,9 +3,10 @@ import Navigation from '../components/navigation'
 import Description from '../components/description'
 import { useEffect, useState } from 'react'
 import { baseUrl } from '../service/api'
+import Image from 'next/image'
 import dayjs from 'dayjs'
 
-export default function suggestionstatus() {
+export default function SuggestionStatus() {
 
     const [date, setDate] = useState('')
 
@@ -37,11 +38,13 @@ export default function suggestionstatus() {
                         <div className='flex flex-row justify-between'>
                             <div className='flex flex-col celular:space-y-20 md:space-y-16 celular:py-10 md:py-20 px-6'>
                                 {
-                                    date ? <img src="/rectangle.png" alt="rectangle" />
-                                        : <img src="/emptyRectangle.svg" alt="rectangle" />
+                                    date ? <div className='w-full h-20 relative' >  <Image layout='fill' objectFit='cover' src="/rectangle.png" alt="rectangle" /></div>
+                                        : <Image layout='fill' src="/emptyRectangle.svg" alt="rectangle" />
                                 }
-                                <img src="/emptyRectangle.svg" alt="rectangle" />
-                                <img src="/emptyRectangle.svg" alt="rectangle" />
+                                <div className='w-full h-20 relative' > <Image layout='fill' objectFit='' src="/emptyRectangle.svg" alt="rectangle" /> </div>
+
+                                <div className='w-full h-20 relative' >  <Image layout='fill' objectFit='' src="/emptyRectangle.svg" alt="rectangle" /></div>
+
                             </div>
                             <div className='flex flex-col celular:space-y-7 md:space-y-20 celular:py-10 md:py-20 '>
                                 <h1 className='text-gray-900 text-xl font-medium'>Recibido el {date ? date : '02 de marzo'}</h1>
@@ -49,8 +52,10 @@ export default function suggestionstatus() {
                                 <h1 className='text-gray-900 text-xl font-medium'>Implementado</h1>
                             </div>
                         </div>
-                        <div className='py-10'>
-                            <img src="/littlethings.png" alt="littlethings" />
+                        <div className='py-10  '>
+                            <div className='w-full h-20 relative'  >
+                                <Image layout='fill' objectFit='' src="/littlethings.png" alt="littlethings" />
+                            </div>
                         </div>
 
                     </div>

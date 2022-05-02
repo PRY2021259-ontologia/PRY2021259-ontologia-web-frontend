@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import { useEffect, useState } from 'react'
 import { baseUrl } from '../service/api'
 import dayjs from 'dayjs'
+import { useCallback } from 'react/cjs/react.production.min'
 
 export default function Definitions() {
 
@@ -21,7 +22,8 @@ export default function Definitions() {
         })
     }
 
-    const newListConcepts = () => {
+
+    const newListConcepts = useCallback(() => {
         const startDate = dayjs(valueDate.startDate).format('YYYY-MM-DD')
         const endDate = dayjs(valueDate.endDate).format('YYYY-MM-DD')
         const filterBYDate = listConcepts.filter(history => {
@@ -29,14 +31,16 @@ export default function Definitions() {
             return date >= startDate && date <= endDate
         })
         setListFilter(filterBYDate)
-    }
+    }, [listConcepts, valueDate.endDate, valueDate.startDate])
+
 
     useEffect(() => {
         newListConcepts()
         return () => {
             setListFilter([])
         }
-    }, [valueDate])
+    }, [valueDate, newListConcepts])
+
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('username'))

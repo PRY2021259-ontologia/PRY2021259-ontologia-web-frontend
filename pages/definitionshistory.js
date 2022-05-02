@@ -9,10 +9,11 @@ import 'dayjs/locale/es'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
+import { useCallback } from 'react/cjs/react.production.min'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-export default function difinitionshistory() {
+export default function DifinitionsHistory() {
 
     const [listHistories, setListHistories] = useState([])
     const [listFilter, setListFilter] = useState([])
@@ -28,7 +29,7 @@ export default function difinitionshistory() {
         })
     }
 
-    const newListHistory = () => {
+    const newListHistory = useCallback(() => {
         const startDate = dayjs(valueDate.startDate).format('YYYY-MM-DD')
         const endDate = dayjs(valueDate.endDate).format('YYYY-MM-DD')
         const filterBYDate = listHistories.filter(history => {
@@ -36,7 +37,7 @@ export default function difinitionshistory() {
             return date >= startDate && date <= endDate
         })
         setListFilter(filterBYDate)
-    }
+    }, [listHistories,valueDate.endDate,valueDate.startDate])
 
     const convertDate = (date) => {
         if (!date) {
@@ -52,7 +53,7 @@ export default function difinitionshistory() {
         return () => {
             setListFilter([])
         }
-    }, [valueDate])
+    }, [valueDate,newListHistory])
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('username'))

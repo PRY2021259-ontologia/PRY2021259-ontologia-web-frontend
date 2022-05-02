@@ -5,6 +5,7 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import Image from "next/image"
 
 export default function Navigation() {
 
@@ -41,28 +42,28 @@ export default function Navigation() {
             <div>
               <div className="flex flex-row justify-between z-[3]">
                 <div className="flex flex-row md:space-x-10">
-                  <a href="/" className="flex items-center">
-                    <img className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
-                  </a>
+                  <Link passHref href="/" className="flex items-center">
+                    <Image layout='fill' className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
+                  </Link>
                   <div className="celular:hidden md:flex items-center md:space-x-10">
                     <div>
-                      <Link href="/assistedsearch">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Busqueda guiada</a>
+                      <Link passHref href="/assistedsearch">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Busqueda guiada</a>
                       </Link>
                     </div>
                     <div>
-                      <Link href="/suggestions">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
+                      <Link passHref href="/suggestions">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
                       </Link>
                     </div>
                     <div>
-                      <Link href="/definitionshistory">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Historial</a>
+                      <Link passHref href="/definitionshistory">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Historial</a>
                       </Link>
                     </div>
                     <div>
-                      <Link href="/definitions">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Conceptos</a>
+                      <Link passHref href="/definitions">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Conceptos</a>
                       </Link>
                     </div>
                   </div>
@@ -74,7 +75,7 @@ export default function Navigation() {
                     </div>
                   </div>
                   <button onClick={() => signOutLocal()}>
-                    {session ? <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                    {session ? <Image alt="hola" layout='fill' className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
                       : <FontAwesomeIcon size="lg" icon={faUser} />}
                   </button>
                 </div>
@@ -89,40 +90,40 @@ export default function Navigation() {
             <div>
               <div className="flex flex-row justify-between z-[3]">
                 <div className="flex flex-row md:space-x-10">
-                  <a href="/" className="flex items-center">
-                    <img className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
-                  </a>
+                  <Link passHref href="/" className="flex items-center">
+                    <Image layout='fill' className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
+                  </Link>
                   <div className="celular:hidden md:flex items-center">
                     <div>
-                      <Link href="/assistedsearch">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Busqueda guiada</a>
+                      <Link passHref href="/assistedsearch">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Busqueda guiada</a>
                       </Link>
                     </div>
                     <div>
-                      <Link href="/suggestions">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
+                      <Link passHref href="/suggestions">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium">Sugerencias</a>
                       </Link>
                     </div>
                     <div>
-                      <Link href="/definitionshistory">
-                        <a className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Historial</a>
+                      <Link passHref href="/definitionshistory">
+                        <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium hidden">Historial</a>
                       </Link>
                     </div>
                   </div>
                 </div>
                 <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
                   <div>
-                    <Link href="/login">
-                      <button className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
+                    <Link passHref href="/login">
+                      <a href="replace" className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
                         Inicia sesión
-                      </button>
+                      </a>
                     </Link>
                   </div>
                   <div>
-                    <Link href="/register">
-                      <button className="flex justify-center items-center text-white hover:bg-bluepotatohover h-8 rounded-md w-28 bg-bluepotato font-medium">
+                    <Link passHref href="/register">
+                      <a href="replace" className="flex justify-center items-center text-white hover:bg-bluepotatohover h-8 rounded-md w-28 bg-bluepotato font-medium">
                         Regístrate
-                      </button>
+                      </a>
                     </Link>
                   </div>
                 </div>
@@ -141,23 +142,23 @@ export default function Navigation() {
           session || isAuth ? (
             <div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/suggestions">
-                  <a className="text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
+                <Link passHref href="/suggestions">
+                  <a href="replace" className="text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
                 </Link>
               </div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/definitionshistory">
-                  <a className="text-bluepotato py-1 rounded-md font-medium">Historial</a>
+                <Link passHref href="/definitionshistory">
+                  <a href="replace" className="text-bluepotato py-1 rounded-md font-medium">Historial</a>
                 </Link>
               </div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/definitions">
-                  <a className="text-bluepotato py-1 rounded-md font-medium">Conceptos</a>
+                <Link passHref href="/definitions">
+                  <a href="replace" className="text-bluepotato py-1 rounded-md font-medium">Conceptos</a>
                 </Link>
               </div>
               <div className="flex flex-row pb-2 justify-between items-center py-2 px-6 hover:bg-gray-200 duration-500">
                 <div className="flex flex-row space-x-3">
-                  {session ? <img className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
+                  {session ? <Image alt="" layout='fill' className="rounded-full w-[45px] h-[45px]" src={session.user.image} />
                     : <FontAwesomeIcon size="lg" className="rounded-full w-[45px] h-[45px] m-auto" icon={faUser} />}
                   <div className="flex flex-col ">
                     <p>{session ? session.user.name : user.name}</p>
@@ -170,36 +171,36 @@ export default function Navigation() {
                 </div>
               </div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="#">
-                  <a className="text-gray-500 py-1 rounded-md font-medium">Perfil</a>
+                <Link passHref href="#">
+                  <a href="replace" className="text-gray-500 py-1 rounded-md font-medium">Perfil</a>
                 </Link>
               </div>
               <div onClick={() => signOutLocal()} className="py-3 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/login">
-                  <a className="text-gray-500 py-1 rounded-md font-medium">Salir</a>
+                <Link passHref href="/login">
+                  <a href="replace" className="text-gray-500 py-1 rounded-md font-medium">Salir</a>
                 </Link>
               </div>
             </div>
           ) : (
             <div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/suggestions">
-                  <a className="text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
+                <Link passHref href="/suggestions">
+                  <a href="replace" className="text-bluepotato py-1 rounded-md font-medium">Sugerencias</a>
                 </Link>
               </div>
               <div className="py-2 px-6 hover:bg-gray-200 duration-500">
-                <Link href="/assistedsearch">
-                  <a className="text-bluepotato py-1 rounded-md font-medium">Búsqueda guiada</a>
+                <Link passHref href="/assistedsearch">
+                  <a href="replace" className="text-bluepotato py-1 rounded-md font-medium">Búsqueda guiada</a>
                 </Link>
               </div>
               <div className="py-2 px-6 duration-500 text-center">
-                <Link href="/login">
-                  <a className="text-gray-500 py-1 rounded-md font-medium">Inicia sesión</a>
+                <Link passHref href="/login">
+                  <a href="replace" className="text-gray-500 py-1 rounded-md font-medium">Inicia sesión</a>
                 </Link>
               </div>
               <div className="py-3 px-6 bg-bluepotato duration-500 text-center">
-                <Link href="/register">
-                  <a className="text-white py-1 rounded-md font-medium">Regístrate</a>
+                <Link passHref href="/register">
+                  <a href="replace" className="text-white py-1 rounded-md font-medium">Regístrate</a>
                 </Link>
               </div>
             </div>

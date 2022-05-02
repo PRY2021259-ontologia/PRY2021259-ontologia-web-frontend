@@ -49,7 +49,7 @@ export default function Login() {
             <div>
               <div className='flex flex-col items-center'>
                 <h1 className='font-extrabold text-3xl py-3'>Inicia sesión</h1>
-                <p className='font-normal text-gray-600 pb-6'>O <Link href='/register'><button className='text-bluepotato hover:underline'>regístrate</button>
+                <p className='font-normal text-gray-600 pb-6'>O <Link passHref href='/register'><a href="replace"className='text-bluepotato hover:underline'>regístrate</a>
                 </Link></p>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function Login() {
                     <input
                       type="checkbox"
                     /> Recordar mi cuenta</label>
-                  <p className=''><Link href='/'><button className='text-bluepotato hover:underline font-medium'>¿Olvidaste tu contraseña?</button></Link></p>
+                  <p className=''><Link passHref href='/'><a href="replace" className='text-bluepotato hover:underline font-medium'>¿Olvidaste tu contraseña?</a></Link></p>
                 </div>
                 <div className='py-3'>
                   <button type='submit' className="w-full h-9 hover:bg-bluepotatohover rounded-md bg-bluepotato font-medium text-white">

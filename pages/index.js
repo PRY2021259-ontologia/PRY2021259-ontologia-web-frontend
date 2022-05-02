@@ -10,23 +10,26 @@ import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { baseUrl } from '../service/api'
 
+
 export default function Index({ categories, plants, plantCategories }) {
   const { data: session, status } = useSession()
 
-  useEffect(async () => {
-    if (!session) return
-    const listUser = await baseUrl.get('/users')
-    const existUser = listUser.data.find(user => user.email === session.user?.email)
-    localStorage.setItem('username', JSON.stringify(existUser))
-    if (existUser) return
-    const registerUser = await baseUrl.post('/users', {
-      email: session.user.email,
-      name: session.user.name,
-      lastName: session.user.name,
-    })
-    if (registerUser.status === 200) {
-      localStorage.setItem('username', JSON.stringify(registerUser.data))
-    }
+  useEffect(() => {
+    (async () => {
+      if (!session) return
+      const listUser = await baseUrl.get('/users')
+      const existUser = listUser.data.find(user => user.email === session.user?.email)
+      localStorage.setItem('username', JSON.stringify(existUser))
+      if (existUser) return
+      const registerUser = await baseUrl.post('/users', {
+        email: session.user.email,
+        name: session.user.name,
+        lastName: session.user.name,
+      })
+      if (registerUser.status === 200) {
+        localStorage.setItem('username', JSON.stringify(registerUser.data))
+      }
+    })()
   }, [session])
   return (
     <div>
@@ -37,7 +40,7 @@ export default function Index({ categories, plants, plantCategories }) {
 
       <main className=' celular:text-sm celular:w-full md:text-base md:w-2/3 md:mx-auto min-h-screen'>
         <div className='flex md:flex-row pb-12 pt-16 justify-center  md:w-full md:h-full celular:mx-auto'>
-          <img src="/Frame.png" alt="home image" />
+          <Image layout='fill' src="/Frame.png" alt="home image" />
         </div>
 
         <div className='flex md:flex-row relative justify-center'>
@@ -50,15 +53,15 @@ export default function Index({ categories, plants, plantCategories }) {
         </div>
 
         <div className='flex md:flex-row justify-center md:py-6 2xl:space-x-10 celular:flex-col items-center celular:space-x-0 py-6 md:space-x-10'>
-          <Link href="/search">
-            <button className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
+          <Link passHref href="/search">
+            <a href="replace" className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
               Buscar
-            </button>
+            </a>
           </Link>
-          <Link href="/assistedsearch">
-            <button className=" celular:my-1 celular:w-80 rounded-xl hover:bg-bluepotatohover md:w-48 h-9 bg-bluepotato text-white celular:text-lg md:text-base">
+          <Link passHref href="/assistedsearch">
+            <a href="replace" className=" celular:my-1 celular:w-80 rounded-xl hover:bg-bluepotatohover md:w-48 h-9 bg-bluepotato text-white celular:text-lg md:text-base">
               Ayuda en la búsqueda
-            </button>
+            </a>
           </Link>
         </div>
 

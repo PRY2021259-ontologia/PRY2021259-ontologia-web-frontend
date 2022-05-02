@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { baseUrl } from '../service/api'
 import { Alerting } from '../utils/alert'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 export default function Suggestions() {
 
@@ -60,7 +61,7 @@ export default function Suggestions() {
           </div>
           <div className='flex md:flex-row celular:flex-col justify-between'>
             <div className='py-10'>
-              <img src="/remotelife.png" alt="remoteLife" />
+              <Image layout='fill' src="/remotelife.png" alt="remoteLife" />
             </div>
             <div className=' md:w-1/2 celular:pb-6 md:pb-0'>
 
