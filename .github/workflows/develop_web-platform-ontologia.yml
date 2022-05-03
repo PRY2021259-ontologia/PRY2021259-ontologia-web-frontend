@@ -28,7 +28,7 @@ jobs:
           
       - name: Display structure of downloaded files
         run: |
-          ls -R
+          ls
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
