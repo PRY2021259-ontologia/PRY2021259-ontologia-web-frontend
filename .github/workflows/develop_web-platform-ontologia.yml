@@ -25,7 +25,11 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-
+          
+      - name: Display structure of downloaded files
+        run: |
+          ls -R
+          
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -34,5 +38,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E79F307F67B74AF782175704E962D5F1 }}
           package: .
-
-     
