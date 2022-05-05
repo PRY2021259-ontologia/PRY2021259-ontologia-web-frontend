@@ -39,9 +39,9 @@ export default function Index({ categories, plants, plantCategories }) {
       <Navigation />
 
       <main className=' celular:text-sm celular:w-full md:text-base md:w-2/3 md:mx-auto min-h-screen'>
-        <div className='flex md:flex-row pb-12 pt-16 justify-center  md:w-full md:h-full celular:mx-auto'>
-          <Image layout='fill' src="/Frame.png" alt="home image" />
-        </div>
+          <div className='flex justify-center mb-8 mt-12'>
+            <Image width={320} height={59} src="/Frame.png" alt="home image" />
+          </div>
 
         <div className='flex md:flex-row relative justify-center'>
           <div className='relative celular:w-full celular:mx-8 md:w-3/5 z-[1]' >
@@ -54,12 +54,12 @@ export default function Index({ categories, plants, plantCategories }) {
 
         <div className='flex md:flex-row justify-center md:py-6 2xl:space-x-10 celular:flex-col items-center celular:space-x-0 py-6 md:space-x-10'>
           <Link passHref href="/search">
-            <a href="replace" className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
+            <a href="replace" className=" text-center celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
               Buscar
             </a>
           </Link>
           <Link passHref href="/assistedsearch">
-            <a href="replace" className=" celular:my-1 celular:w-80 rounded-xl hover:bg-bluepotatohover md:w-48 h-9 bg-bluepotato text-white celular:text-lg md:text-base">
+            <a href="replace" className="text-center celular:my-1 celular:w-80 rounded-xl hover:bg-bluepotatohover md:w-48 h-9 bg-bluepotato text-white celular:text-lg md:text-base">
               Ayuda en la búsqueda
             </a>
           </Link>
@@ -81,7 +81,7 @@ export default function Index({ categories, plants, plantCategories }) {
             </div>
           ))}
         </div>
-        {/*  
+        {/*
         </main>
         </div><table className='justify-center w-full'>
           <tr className=''>
@@ -178,4 +178,3 @@ export const getStaticProps = async (context) => {
     },
   }
 }
-

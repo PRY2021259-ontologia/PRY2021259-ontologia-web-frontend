@@ -16,8 +16,8 @@ export default function Home() {
       <Navigation />
 
       <main className='mx-auto w-2/3 min-h-screen'>
-        <div className='flex flex-row pb-12 pt-20 justify-center'>
-          <Image layout='fill' src="/Frame.png" alt="home image" />
+        <div className='flex justify-center mb-8 mt-12'>
+          <Image width={320} height={59} src="/Frame.png" alt="home image" />
         </div>
 
         <div className='flex flex-row relative justify-center'>
@@ -31,19 +31,22 @@ export default function Home() {
 
         <div className='flex flex-row justify-center py-6 space-x-10'>
           <Link passHref href="/search">
-            <a href="replace" className="rounded-md hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white font-medium">
+            <a href="replace" className="rounded-md text-center hover:bg-bluebuscarhover w-48 h-9 bg-bluebuscar text-white font-medium">
               Buscar
             </a>
           </Link>
           <Link passHref href="/assistedsearch">
-            <a href="replace" className="rounded-md hover:bg-bluepotatohover w-48 bg-bluepotato text-white font-medium">
+            <a href="replace" className="rounded-md text-center hover:bg-bluepotatohover w-48 bg-bluepotato text-white font-medium">
               Ayuda en la búsqueda
             </a>
           </Link>
         </div>
 
         <div className='flex flex-row justify-around py-4 text-base font-medium'>
-          <div className=''>Categoría 1
+          <div className=''>
+            <div className='text-center'>
+              <p>Categoría 1</p>
+            </div>
             <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
               <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                 alt="avatar" width={55} height={42} className="rounded" />
@@ -53,7 +56,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className=''>Categoría 2
+          <div className=''>
+            <div className='text-center'>
+              <p>Categoría 2</p>
+            </div>
             <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
               <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                 alt="avatar" width={55} height={42} className="rounded" />
@@ -77,7 +83,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className=''>Categoría 3
+          <div className=''>
+            <div>
+              <div className='text-center'>
+                <p>Categoría 3</p>
+              </div>
+            </div>
             <div className='flex flex-row shadow-md shadow-gray-400 rounded-lg py-5 px-10 my-3 shrink-0 w-64 h-22'>
               <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                 alt="avatar" width={55} height={42} className="rounded" />
