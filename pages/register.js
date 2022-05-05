@@ -13,7 +13,7 @@ export default function Register() {
 
   async function onSubmitForm(values) {
 
-    const { name, lastName, email, password } = values;
+    const { name, lastName, email, password, dateOfBirth, occupation } = values;
 
     const listUser = await baseUrl.get('/users');
     const existUser = listUser.data.find(user => user.email === email);
@@ -28,7 +28,7 @@ export default function Register() {
       return
     }
 
-    await baseUrl.post('/users', { name, lastName, email });
+    await baseUrl.post('/users', { name, lastName, email, dateOfBirth, occupation });
     await baseUrl.post('/userlogins', { username: email, password });
     Alerting({
       title: 'Registro Exitoso',
@@ -110,28 +110,28 @@ export default function Register() {
                   className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
                   type="password"
                 />
-                {errors.password2 && errors.password2.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor vuelva a ingresar su contraseña</span>}
-                {errors.password2 && errors.password2.type === 'minLength' && <span className='text-red-600 text-sm font-normal'>La contraseña debe contener por lo menos 5 caracteres</span>}
+                {errors.confirmPassword && errors.confirmPassword.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor vuelva a ingresar su contraseña</span>}
+                {errors.confirmPassword && errors.confirmPassword.type === 'minLength' && <span className='text-red-600 text-sm font-normal'>La contraseña debe contener por lo menos 5 caracteres</span>}
               </div>
               <div className='py-2'>
-                <label htmlFor='date' className='flex flex-row py-1 text-gray-700'>Fecha de nacimiento</label>
+                <label htmlFor='dateOfBirth' className='flex flex-row py-1 text-gray-700'>Fecha de nacimiento</label>
                 <input
-                  {...register('date', { required: true })}
-                  name="date"
+                  {...register('dateOfBirth', { required: true })}
+                  name="dateOfBirth"
                   className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
                   type="date"
                 />
-                {errors.date && errors.date.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese una fecha</span>}
+                {errors.dateOfBirth && errors.dateOfBirth.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese una fecha</span>}
               </div>
               <div className='py-2'>
-                <label htmlFor='ocupation' className='flex flex-row py-1 text-gray-700'>Ocupacion</label>
-                <select {...register('ocupation', { required: true })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10">
+                <label htmlFor='occupation' className='flex flex-row py-1 text-gray-700'>Ocupacion</label>
+                <select {...register('occupation', { required: true })} className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10">
                   <option value="">Seleccione una opcion</option>
                   <option className="text-gray-700" value="1">Ganadero</option>
                   <option className="text-gray-700" value="2">Cientifico</option>
                   <option className="text-gray-700" value="3">Cocinero</option>
                 </select>
-                {errors.ocupation && errors.ocupation.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su ocupacion</span>}
+                {errors.occupation && errors.occupation.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su ocupacion</span>}
               </div>
               <div className='flex flex-col justify-between py-2'>
                 <label htmlFor='conditions' className='text-gray-800 font-normal'>

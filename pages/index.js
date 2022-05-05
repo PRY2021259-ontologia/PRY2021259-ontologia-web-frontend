@@ -39,8 +39,8 @@ export default function Index({ categories, plants, plantCategories }) {
       <Navigation />
 
       <main className=' celular:text-sm celular:w-full md:text-base md:w-2/3 md:mx-auto min-h-screen'>
-        <div className='flex md:flex-row pb-12 pt-16 justify-center  md:w-full md:h-full celular:mx-auto'>
-          <Image layout='fill' src="/Frame.png" alt="home image" />
+        <div className='flex md:flex-row pb-12 pt-16 justify-center celular:mx-auto'>
+          <Image layout='intrinsic' src="/Frame.png" alt="home image" width={350} height={70}/>
         </div>
 
         <div className='flex md:flex-row relative justify-center'>
@@ -54,14 +54,14 @@ export default function Index({ categories, plants, plantCategories }) {
 
         <div className='flex md:flex-row justify-center md:py-6 2xl:space-x-10 celular:flex-col items-center celular:space-x-0 py-6 md:space-x-10'>
           <Link passHref href="/search">
-            <a href="replace" className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
+            <button href="replace" className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
               Buscar
-            </a>
+            </button>
           </Link>
           <Link passHref href="/assistedsearch">
-            <a href="replace" className=" celular:my-1 celular:w-80 rounded-xl hover:bg-bluepotatohover md:w-48 h-9 bg-bluepotato text-white celular:text-lg md:text-base">
+            <button href="replace" className=" celular:my-1 celular:w-80 rounded-xl hover:bg-bluepotatohover md:w-48 h-9 bg-bluepotato text-white celular:text-lg md:text-base">
               Ayuda en la búsqueda
-            </a>
+            </button>
           </Link>
         </div>
 
@@ -81,23 +81,6 @@ export default function Index({ categories, plants, plantCategories }) {
             </div>
           ))}
         </div>
-        {/*  
-        </main>
-        </div><table className='justify-center w-full'>
-          <tr className=''>
-            {categories.map(categorie => (
-              <th className='celular:w-full md:w-64' key={filterByCategory(categorie.id)}>{categorie.categoryDiseaseName}</th>
-            ))}
-          </tr>
-          <td className='flex flex-col'>
-            {plantCategories.map(plantCategorie => (
-              <th className='celular:text-lg md:text-sm' key={plantCategorie.id}>{plantCategorie.plantDiseaseName}</th>
-            ))}
-          </td>
-        </table>
-        <table className='justify-center w-full'
-          categorie={plantCategories}
-          col_labels={['Categoría', 'Planta']} />*/}
 
       </main>
 
@@ -127,38 +110,37 @@ export const getStaticProps = async (context) => {
   const cat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases')
   const data = await cat.json();
 
-  //const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/');
-  //const data2 = await plat.json();
+  const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/');
+  const data2 = await plat.json();
 
-  const categoryId = data.map(function (item) {
-    return item.id;
-  });
+  //const categoryId = data.map(function (item) {
+  //  return item.id;
+  //});
 
 
-  var plantCategories = [];
+  //var plantCategories = [];
   //var mergerdCat = [];
 
-  for (let i = 0; i < categoryId.length; i++) {
-    const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i] + '/plantdiseases')
-    const plantCategory = await plantCat.json();
-    for (let j = 0; j < plantCategory.length; j++) {
-      plantCategory[j] = { ...plantCategory[j], categoryId: categoryId[i] }
-    }
+  //for (let i = 0; i < categoryId.length; i++) {
+    //const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i] + '/plantdiseases')
+    //const plantCategory = await plantCat.json();
+    //for (let j = 0; j < plantCategory.length; j++) {
+     // plantCategory[j] = { ...plantCategory[j], categoryId: categoryId[i] }
+    //}
     //plantCategories.prototype.push.apply(plantCategories, plantCategory);
-    plantCategories = [...plantCategories, ...plantCategory];
+    //plantCategories = [...plantCategories, ...plantCategory];
     //const plantCat2 = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i + 1] + '/plantdiseases')
     //const plantCategory2 = await plantCat2.json();
     //mergerdCat = plantCategory.concat(plantCategory2);
     //console.log(plantCategories)
-  }
+  //}
   //tengo cateries, aplico filter para devolver por categoria, con la lista de las categories, se hace for para devolver array de la categoria en especifico
 
   //console.log(plantCategories)
-  function filterByCategory(categoryId) {
-    return plantCategories.filter(plantCategorie => plantCategorie.categoryId === categoryId);
-  }
+  //function filterByCategory(categoryId) {
+  //  return plantCategories.filter(plantCategorie => plantCategorie.categoryId === categoryId);
+  //}
 
-  let approved = plantCategories.filter(a => a.categoryId === '1b84cf27-2da1-48b8-1d5f-08da27d913e4')
   //console.log(plantCategories)
 
   //const categories = JSON.parse(JSON.stringify(data));
@@ -173,7 +155,7 @@ export const getStaticProps = async (context) => {
     props: {
       categories: data,
       //plants: data2,
-      plantCategories: approved
+      plantCategories: data2
       //plantCategoryId: plantCategoryId
     },
   }

@@ -17,7 +17,7 @@ export default function AssistedSearch() {
           </div>
           <div className='flex md:flex-row celular:flex-col md:pt-6 justify-center'>
             <div className='flex md:flex-row celular:flex-col md:ml-10 items-center'>
-              <Image layout='fill' src='/pensando.png' alt='assistedImage' />
+              <Image layout='intrinsic' width={350} height={350} src='/pensando.png' alt='assistedImage' />
               <div className='flex flex-col justify-center shadow-lg border rounded-lg md:ml-2 celular:mx-2 md:mr-20 p-12 h-52 w-80'>
                 <div className='py-2'>
                   <p className='flex w-56 font-semibold text-center'>¿Lo que buscas esta relacionado a enfermedades?</p>

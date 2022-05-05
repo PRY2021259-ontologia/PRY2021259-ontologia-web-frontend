@@ -43,7 +43,7 @@ export default function Navigation() {
               <div className="flex flex-row justify-between z-[3]">
                 <div className="flex flex-row md:space-x-10">
                   <Link passHref href="/" className="flex items-center">
-                    <Image layout='fill' className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
+                    <Image layout='intrinsic' alt="Logo" width={40} height={40} className="celular:w-9 celular:h-9" src="/Mark.svg" />
                   </Link>
                   <div className="celular:hidden md:flex items-center md:space-x-10">
                     <div>
@@ -91,7 +91,7 @@ export default function Navigation() {
               <div className="flex flex-row justify-between z-[3]">
                 <div className="flex flex-row md:space-x-10">
                   <Link passHref href="/" className="flex items-center">
-                    <Image layout='fill' className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
+                    <Image layout='intrinsic' alt="Logo" width={40} height={40} className="celular:w-9 celular:h-9" src="/Mark.svg" />
                   </Link>
                   <div className="celular:hidden md:flex items-center">
                     <div>
