@@ -39,9 +39,9 @@ export default function Index({ categories, plants, plantCategories }) {
       <Navigation />
 
       <main className=' celular:text-sm celular:w-full md:text-base md:w-2/3 md:mx-auto min-h-screen'>
-        <div className='flex md:flex-row pb-12 pt-16 justify-center celular:mx-auto'>
-          <Image layout='intrinsic' src="/Frame.png" alt="home image" width={350} height={70}/>
-        </div>
+          <div className='flex justify-center mb-8 mt-12'>
+            <Image width={320} height={59} src="/Frame.png" alt="home image" />
+          </div>
 
         <div className='flex md:flex-row relative justify-center'>
           <div className='relative celular:w-full celular:mx-8 md:w-3/5 z-[1]' >
@@ -81,6 +81,23 @@ export default function Index({ categories, plants, plantCategories }) {
             </div>
           ))}
         </div>
+        {/*
+        </main>
+        </div><table className='justify-center w-full'>
+          <tr className=''>
+            {categories.map(categorie => (
+              <th className='celular:w-full md:w-64' key={filterByCategory(categorie.id)}>{categorie.categoryDiseaseName}</th>
+            ))}
+          </tr>
+          <td className='flex flex-col'>
+            {plantCategories.map(plantCategorie => (
+              <th className='celular:text-lg md:text-sm' key={plantCategorie.id}>{plantCategorie.plantDiseaseName}</th>
+            ))}
+          </td>
+        </table>
+        <table className='justify-center w-full'
+          categorie={plantCategories}
+          col_labels={['Categoría', 'Planta']} />*/}
 
       </main>
 
@@ -160,4 +177,3 @@ export const getStaticProps = async (context) => {
     },
   }
 }
-
