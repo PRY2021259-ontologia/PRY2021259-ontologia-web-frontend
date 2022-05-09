@@ -29,10 +29,6 @@ export default function Navigation() {
     session && signOut()
   }
 
-  useEffect(() => {
-    SetIsAuth(localStorage.getItem('username'))
-    setUser(JSON.parse(localStorage.getItem('username')))
-  }, [isAuth])
 
   return (
     <nav className="inset-x-0 sticky z-[4] top-0 shadow-md md:justify-center items-center celular:text-sm md:text-base ">

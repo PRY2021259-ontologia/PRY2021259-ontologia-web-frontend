@@ -61,10 +61,9 @@ export default function Suggestions() {
           </div>
           <div className='flex md:flex-row celular:flex-col justify-between'>
             <div className='py-10'>
-              <Image layout='fill' src="/remotelife.png" alt="remoteLife" />
+            <Image width={325} height={325} src="/remotelife.png" alt="remoteLife" />
             </div>
             <div className=' md:w-1/2 celular:pb-6 md:pb-0'>
-
               <form onSubmit={handleSubmit(onSubmitForm)}>
                 <div className='py-2'>
                   <label htmlFor='fullname' className='flex flex-row py-1 text-gray-700'>Nombre completo</label>

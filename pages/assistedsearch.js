@@ -6,18 +6,18 @@ import Image from 'next/image'
 export default function AssistedSearch() {
   return (
     <div>
-
-      <Description />
-
       <Navigation />
       <main className="celular:w-full md:mx-auto md:w-2/3 min-h-screen">
         <div className='flex flex-col'>
           <div className='celular:pt-10 celular:py-5 md:py-10 celular:pl-10'>
             <h1 className='font-bold celular:text-4xl md:text-5xl '>Búsqueda guiada</h1>
           </div>
+          
           <div className='flex md:flex-row celular:flex-col md:pt-6 justify-center'>
-            <div className='flex md:flex-row celular:flex-col md:ml-10 items-center'>
-              <Image layout='fill' src='/pensando.png' alt='assistedImage' />
+            <div className='flex md:flex-row celular:flex-col md:ml-10 items-center'> 
+            <div className='flex-none w-50 h-50'>
+                <Image width={200} height={200} src='/pensando.png' alt='assistedImage' />
+            </div>
               <div className='flex flex-col justify-center shadow-lg border rounded-lg md:ml-2 celular:mx-2 md:mr-20 p-12 h-52 w-80'>
                 <div className='py-2'>
                   <p className='flex w-56 font-semibold text-center'>¿Lo que buscas esta relacionado a enfermedades?</p>
@@ -42,7 +42,6 @@ export default function AssistedSearch() {
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   )

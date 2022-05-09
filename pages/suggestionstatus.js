@@ -38,8 +38,8 @@ export default function SuggestionStatus() {
                         <div className='flex flex-row justify-between'>
                             <div className='flex flex-col celular:space-y-20 md:space-y-16 celular:py-10 md:py-20 px-6'>
                                 {
-                                    date ? <div className='w-full h-20 relative' >  <Image layout='fill' objectFit='cover' src="/rectangle.png" alt="rectangle" /></div>
-                                        : <Image layout='fill' src="/emptyRectangle.svg" alt="rectangle" />
+                                    date ? <div className='w-full h-20 relative' >  <Image height={50} width={50} objectFit='cover' src="/rectangle.png" alt="rectangle" /></div>
+                                        : <Image height={50} width={50} src="/emptyRectangle.svg" alt="rectangle" />
                                 }
                                 <div className='w-full h-20 relative' > <Image layout='fill' objectFit='' src="/emptyRectangle.svg" alt="rectangle" /> </div>
 
