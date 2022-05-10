@@ -47,7 +47,7 @@ export default function Details({ plant }) {
         <div className='flex flex-col md:items-start celular:items-center'>
           <div className='flex md:flex-row celular:flex-col my-6 py-8 px-10 justify-between md:shadow-md rounded-lg w-full'>
             <div className="flex md:flex-row celular:flex-col celular:items-center md:items-end md:space-x-20">
-              <h1 className='font-extrabold text-4xl md:py-0 celular:py-4 text-center'>Enfermedades de la papa</h1>
+              <h1 className='font-extrabold text-2xl md:py-0 celular:py-4 text-center'>Enfermedades de la papa</h1>
               <button onClick={() => saveConcept(plant)} className='celular:w-full celular:h-10 md:w-40 md:h-8 bg-skyblue text-white rounded-md font-medium'>Guardar detalle</button>
             </div>
             <div className='flex flex-col md:py-0 celular:py-10 md:w-[250px]'>
