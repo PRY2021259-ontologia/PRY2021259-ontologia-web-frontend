@@ -53,11 +53,11 @@ export default function Suggestions() {
 
       <Navigation />
 
-      <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
+      <main className="celular:text-sm md:text-base mx-auto w-5/6 min-h-screen">
         <div className='flex flex-col'>
           <div className="flex justify-between">
-            <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-10'>Sugerencias</h1>
-            <a onClick={() => goSuggestions()} className='text-indigo-700 hover:underline hover:cursor-pointer my-auto'>¿Ya haz realizado una sugerencia?</a>
+            <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-8'>Sugerencias</h1>
+            <a onClick={() => goSuggestions()} className='my-auto text-skyblue'>¿Ya has realizado una sugerencia?</a>
           </div>
           <div className='flex md:flex-row celular:flex-col justify-between'>
             <div className='py-10'>
@@ -107,7 +107,7 @@ export default function Suggestions() {
                     {...register('comment', { required: true })}
                     className='w-full rounded-md px-3 py-1 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600'
                     name="comment"
-                    rows="10"
+                    rows="2"
                     cols="50"
                   />
                   {errors.text && errors.text.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor escriba una sugerencia</span>}
