@@ -36,7 +36,7 @@ export default function Navigation() {
 
   return (
     <nav className="inset-x-0 sticky z-[4] top-0 shadow-md md:justify-center items-center celular:text-sm md:text-base ">
-      <div className="flex-row sticky z-[4] py-4 md:w-2/3 mx-auto celular:px-6 bg-white ">
+      <div className="flex-row sticky z-[4] py-4 md:w-5/6 mx-auto celular:px-6 bg-white ">
         {
           session || isAuth ? (
             <div>
