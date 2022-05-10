@@ -92,7 +92,7 @@ export default function Suggestions() {
 
                 <div className='py-2'>
                   <input
-                    {...register('phone', { required: true, pattern: [0-9]})}
+                    {...register('phone', { required: true, })}
                     className="w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10"
                     name="phone"
                     placeholder='Celular'
