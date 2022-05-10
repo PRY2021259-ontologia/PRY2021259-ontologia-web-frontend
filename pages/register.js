@@ -44,7 +44,7 @@ export default function Register() {
 
       <Description />
 
-      <main className=' celular:text-sm md:text-base md:mx-auto md:w-2/3 font-medium min-h-screen'>
+      <main className=' celular:text-sm md:text-base md:mx-auto md:w-5/6 font-medium min-h-screen'>
         <div className='flex flex-col items-center pt-5'>
 
           <div className='flex flex-col items-center'>

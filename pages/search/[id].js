@@ -43,7 +43,7 @@ export default function Details({ plant }) {
 
       <Navigation />
 
-      <main className="celular:text-sm md:text-base mx-auto celular:w-full md:w-2/3 min-h-screen">
+      <main className="celular:text-sm md:text-base mx-auto celular:w-full md:w-5/6 min-h-screen">
         <div className='flex flex-col md:items-start celular:items-center'>
           <div className='flex md:flex-row celular:flex-col my-6 py-8 px-10 justify-between md:shadow-md rounded-lg w-full'>
             <div className="flex md:flex-row celular:flex-col celular:items-center md:items-end md:space-x-20">
