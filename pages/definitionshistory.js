@@ -79,7 +79,7 @@ export default function DifinitionsHistory() {
             <Description />
 
             <Navigation />
-            <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-5/6 min-h-screen">
+            <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-5/6 h-full">
                 <div className='flex flex-col'>
                     <div className='py-12 '>
                         <h1 className='font-bold celular:text-4xl md:text-5xl'>Historial de Conceptos</h1>

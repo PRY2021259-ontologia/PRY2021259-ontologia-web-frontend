@@ -67,7 +67,7 @@ export default function Definitions() {
             <Description />
 
             <Navigation />
-            <main className="celular:text-sm md:text-base mx-auto w-5/6 min-h-screen">
+            <main className="celular:text-sm md:text-base mx-auto w-5/6 h-full">
                 <div className='flex flex-col'>
                     <div className='py-12'>
                         <h1 className='font-bold celular:text-4xl md:text-5xl'>Conceptos guardados</h1>
@@ -109,9 +109,10 @@ export default function Definitions() {
                         </div>
                     </div>
                 </div>
+                
             </main >
-
             <Footer />
+            
         </div >
     )
 }
