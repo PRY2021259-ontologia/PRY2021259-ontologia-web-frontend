@@ -67,17 +67,17 @@ export default function Definitions() {
             <Description />
 
             <Navigation />
-            <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
+            <main className="celular:text-sm md:text-base mx-auto w-5/6 min-h-screen">
                 <div className='flex flex-col'>
-                    <div className='py-10 '>
+                    <div className='py-12'>
                         <h1 className='font-bold celular:text-4xl md:text-5xl'>Conceptos guardados</h1>
                     </div>
                     <div className='flex celular:flex-col md:flex-row md:space-x-16'>
-                        <div className='flex flex-col p-7 shadow-md rounded-lg h-1/2 my-2 border'>
+                        <div className='flex flex-col p-7 shadow-md rounded-lg h-1/2 w-1/3 my-2 border'>
                             <h1 className='font-bold text-lg'>
                                 Rango de fechas
                             </h1>
-                            <div className='py-2 font-medium '>
+                            <div className='py-2 font-semibold '>
                                 <div className='py-1'>
                                     <label className='' htmlFor="">Fecha de inicio</label>
                                 </div>
@@ -85,7 +85,7 @@ export default function Definitions() {
                                     <input name="startDate" onChange={(e) => handleChangeDate(e)} className='w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10' type="date" />
                                 </div>
                             </div>
-                            <div className='py-2 font-medium '>
+                            <div className='py-2 font-semibold '>
                                 <div className='py-1'>
                                     <label className='' htmlFor="">Fecha de fin</label>
                                 </div>

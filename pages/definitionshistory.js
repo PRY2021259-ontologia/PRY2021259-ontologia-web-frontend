@@ -79,17 +79,17 @@ export default function DifinitionsHistory() {
             <Description />
 
             <Navigation />
-            <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-2/3 min-h-screen">
+            <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-5/6 min-h-screen">
                 <div className='flex flex-col'>
-                    <div className='py-10 '>
+                    <div className='py-12 '>
                         <h1 className='font-bold celular:text-4xl md:text-5xl'>Historial de Conceptos</h1>
                     </div>
                     <div className='flex celular:flex-col md:flex-row md:space-x-16 celular:mb-6 md:mb-0'>
-                        <div className='flex flex-col p-7 shadow-md rounded-lg celular:w-full md:w-1/4 h-1/2 my-2 border'>
+                        <div className='flex flex-col p-7 shadow-md rounded-lg celular:w-full md:w-1/2 h-1/2 my-2 border'>
                             <h1 className='font-bold text-lg'>
                                 Rango de fechas
                             </h1>
-                            <div className='py-2 font-medium '>
+                            <div className='py-2 font-semibold '>
                                 <div className='py-1'>
                                     <label className='' htmlFor="">Fecha de inicio</label>
                                 </div>
@@ -99,7 +99,7 @@ export default function DifinitionsHistory() {
                                     text-gray-600 h-10' type="date" name="startDate" onChange={(e) => handleChangeDate(e)} />
                                 </div>
                             </div>
-                            <div className='py-2 font-medium '>
+                            <div className='py-2 font-semibold '>
                                 <div className='py-1'>
                                     <label className='' htmlFor="">Fecha de fin</label>
                                 </div>
