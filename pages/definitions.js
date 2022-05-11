@@ -4,7 +4,7 @@ import Footer from '../components/footer'
 import { useEffect, useState } from 'react'
 import { baseUrl } from '../service/api'
 import dayjs from 'dayjs'
-import { useCallback } from 'react/cjs/react.production.min'
+import { useCallback } from 'react'
 
 export default function Definitions() {
 

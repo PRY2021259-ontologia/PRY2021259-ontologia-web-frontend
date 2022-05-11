@@ -9,7 +9,7 @@ import 'dayjs/locale/es'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
-import { useCallback } from 'react/cjs/react.production.min'
+import { useCallback } from 'react'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
@@ -94,8 +94,8 @@ export default function DifinitionsHistory() {
                                     <label className='' htmlFor="">Fecha de inicio</label>
                                 </div>
                                 <div className='py-1'>
-                                    <input className='w-full rounded-md px-3 outline-1 
-                                    outline-offset-0 outline-gray-400 border border-gray-300 
+                                    <input className='w-full rounded-md px-3 outline-1
+                                    outline-offset-0 outline-gray-400 border border-gray-300
                                     text-gray-600 h-10' type="date" name="startDate" onChange={(e) => handleChangeDate(e)} />
                                 </div>
                             </div>

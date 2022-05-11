@@ -31,7 +31,7 @@ export default function Navigation() {
 
   useEffect(() => {
     SetIsAuth(localStorage.getItem('username'))
-    setUser(JSON.parse(localStorage.getItem('username')))
+    setUser(localStorage.getItem('username'))
   }, [isAuth])
 
   return (
