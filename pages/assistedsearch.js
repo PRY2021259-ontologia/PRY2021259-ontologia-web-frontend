@@ -10,12 +10,12 @@ export default function AssistedSearch() {
       <Description />
 
       <Navigation />
-      <main className="celular:w-full md:mx-auto md:w-5/6 min-h-screen">
+      <main className="celular:w-full md:mx-auto md:w-5/6 h-full">
         <div className='flex flex-col'>
-          <div className='celular:pt-10 celular:py-5 md:py-10 celular:pl-10'>
+          <div className='celular:pt-10 celular:py-5 md:py-1 celular:pl-10'>
             <h1 className='font-bold celular:text-4xl md:text-5xl '>Búsqueda guiada</h1>
           </div>
-          <div className='flex md:flex-row celular:flex-col md:pt-6 justify-center'>
+          <div className='flex md:flex-row celular:flex-col pt-2 justify-center'>
           <Image width={350} height={200} src='/pensando.png' alt='assistedImage' />
             <div className='flex md:flex-row celular:flex-col md:ml-1 items-center'>
             
