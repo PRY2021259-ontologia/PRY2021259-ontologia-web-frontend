@@ -44,8 +44,8 @@ export default function Register() {
 
       <Description />
 
-      <main className=' celular:text-sm md:text-base md:mx-auto md:w-2/3 font-medium min-h-screen'>
-        <div className='flex flex-col items-center pt-14'>
+      <main className=' celular:text-sm md:text-base md:mx-auto md:w-5/6 font-medium min-h-screen'>
+        <div className='flex flex-col items-center pt-5'>
 
           <div className='flex flex-col items-center'>
             <p className="text-bluepotato">
@@ -59,7 +59,8 @@ export default function Register() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmitForm)} className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 md:w-2/5 h-full celular:w-full'>
+          <form onSubmit={handleSubmit(onSubmitForm)} 
+          className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 md:w-2/3 h-full celular:w-full'>
             <div>
               <div className='py-2'>
                 <label htmlFor='name' className='flex flex-row py-1 text-gray-700'>Nombres</label>

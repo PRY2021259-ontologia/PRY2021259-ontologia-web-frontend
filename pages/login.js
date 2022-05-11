@@ -41,11 +41,11 @@ export default function Login() {
       <Description />
 
       <main className=' celular:text-sm md:text-base  md:mx-auto md:w-2/3 font-medium min-h-screen'>
-        <div className='flex flex-col items-center pt-14'>
+        <div className='flex flex-col items-center pt-5'>
 
           <div className='flex flex-col items-center'>
             <p className="text-bluepotato">
-              <Image src="/Mark.svg" alt="Logo" width={52} height={48} /></p>
+              <Image src="/Mark.svg" alt="Logo" width={50} height={46} /></p>
             <div>
               <div className='flex flex-col items-center'>
                 <h1 className='font-extrabold text-3xl py-3'>Inicia sesión</h1>
@@ -55,7 +55,7 @@ export default function Login() {
             </div>
           </div>
 
-          <div className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16 md:w-2/5 h-full celular:w-full'>
+          <div className='shadow shadow-gray-400 rounded-lg py-5 px-10 mb-16'>
             <form onSubmit={handleSubmit(onSubmitForm)}>
               <div>
                 <div className='py-3'>

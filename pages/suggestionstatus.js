@@ -31,7 +31,7 @@ export default function SuggestionStatus() {
 
             <Navigation />
 
-            <main className="mx-auto w-2/3 min-h-screen">
+            <main className="mx-auto w-5/6 min-h-screen">
                 <div className='flex flex-col'>
                     <h1 className='font-bold celular:text-3xl md:text-5xl py-10'>Estado de sugerencia</h1>
                     <div className='flex celular:flex-col md:flex-row justify-between'>
@@ -54,7 +54,7 @@ export default function SuggestionStatus() {
                         </div>
                         <div className='py-10  '>
                             <div className='w-full h-20 relative'  >
-                                <Image layout='intrinsic' width={350} height={350} objectFit='' src="/littlethings.png" alt="littlethings" />
+                                <Image layout='intrinsic' width={420} height={350} objectFit='' src="/littlethings.png" alt="littlethings" />
                             </div>
                         </div>
 

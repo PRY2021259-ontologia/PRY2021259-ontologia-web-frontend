@@ -42,7 +42,7 @@ export default function Search({ plants }) {
 
       <Navigation />
 
-      <main className="celular:text-sm md:text-base mx-auto min-h-screen w-2/3">
+      <main className="celular:text-sm md:text-base mx-auto min-h-screen w-5/6">
         <div className='flex md:flex-row celular:flex-col-reverse'>
           <div className='flex flex-col celular:w-full md:w-3/4'>
             <div className='items-center md:px-5 md:py-6 celular:flex celular:text-center'>
