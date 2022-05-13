@@ -52,8 +52,7 @@ export default function Home() {
 
                     <div className=''>
                         {
-                            categories.map( (
-                                // (category) =>
+                            categories.map((category) => (
                                 <div>
 
                                     <div className='text-center'>
@@ -70,7 +69,7 @@ export default function Home() {
                             )
                             )
                         }
-                        </div>
+                    </div>
                 </div>
             </main >
 
