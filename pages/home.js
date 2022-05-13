@@ -52,7 +52,8 @@ export default function Home() {
 
                     <div className=''>
                         {
-                            categories.map((category) => (
+                            categories.map( (
+                                // (category) =>
                                 <div>
 
                                     <div className='text-center'>
@@ -62,7 +63,7 @@ export default function Home() {
                                         <Image src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
                                             alt="avatar" width={55} height={42} className="rounded" />
                                         <div className="flex items-center px-6">
-                                            <p className='text-sm font-medium'>FUNCIONAAA</p>
+                                            <p className='text-sm font-medium'>  FUNCIONAAA</p>
                                         </div>
                                     </div>
                                 </div>
