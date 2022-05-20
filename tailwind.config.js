@@ -52,6 +52,12 @@ module.exports = {
     // },
     //},
   },
+  variants: {
+    extend: {
+      inset: ['group-hover'],
+      transitionDelay: ['group-hover'],
+    },
+  },
   plugins: [
     require('@tailwindcss/line-clamp'),
   ],

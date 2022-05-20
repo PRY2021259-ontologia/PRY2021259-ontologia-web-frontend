@@ -23,7 +23,8 @@
         "react-facebook-login": "^4.1.1",
         "react-hook-form": "^7.29.0",
         "sweetalert2": "^11.4.10",
-        "sweetalert2-react-content": "^5.0.0"
+        "sweetalert2-react-content": "^5.0.0",
+        "swiper": "^8.1.5"
     },
     "devDependencies": {
         "@tailwindcss/line-clamp": "^0.3.1",
