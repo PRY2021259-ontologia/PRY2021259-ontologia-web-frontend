@@ -17,6 +17,11 @@ export default function Header({ session }) {
                         <Image layout='fill' className="celular:w-9 celular:h-9" src="/Mark.svg" alt="Logo" />
                     </Link>
                     <div className="celular:hidden md:flex items-center md:space-x-10">
+                    <div>
+                            <Link passHref href="/assistedsearch">
+                                <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Busqueda guiada</a>
+                            </Link>
+                        </div>
                         <div>
                             <Link passHref href="/assistedsearch">
                                 <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Busqueda guiada</a>
