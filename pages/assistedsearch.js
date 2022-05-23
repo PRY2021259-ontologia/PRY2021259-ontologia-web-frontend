@@ -57,6 +57,10 @@ export default function AssistedSearch() {
           <div className='celular:pt-10 celular:py-5 md:py-1 celular:pl-10'>
             <h1 className='font-bold celular:text-4xl md:text-5xl '>Búsqueda guiada</h1>
           </div>
+          <div className='celular:pt-10 celular:py-5 md:py-1 celular:pl-10'>
+            <h1 className='font-medium celular:text-md md:text-md '>A continuación se mostrara una serie de</h1>
+            <h1 className='font-medium celular:text-md md:text-md '> preguntas para ayudarlo con su busqueda</h1>
+          </div>
           <div className='flex md:flex-row celular:flex-col pt-2 justify-center'>
           <Image width={350} height={200} src='/pensando.png' alt='assistedImage' />
           <div className='flex relative md:flex-row celular:flex-col md:ml-1 items-center'>
