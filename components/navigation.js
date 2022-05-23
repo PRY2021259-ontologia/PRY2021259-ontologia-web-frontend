@@ -112,6 +112,13 @@ export default function Navigation() {
                   </div>
                 </div>
                 <div className="celular:hidden md:flex flex-row items-center celular:space-x-1 md:space-x-6">
+                <div>
+                    <Link passHref href="/login">
+                      <a href="replace" className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-blue-500 font-medium">
+                        Ayuda
+                      </a>
+                    </Link>
+                  </div>
                   <div>
                     <Link passHref href="/login">
                       <a href="replace" className="flex justify-center items-center hover:bg-gray-100 px-3 h-8 rounded-md text-gray-500 font-medium">
