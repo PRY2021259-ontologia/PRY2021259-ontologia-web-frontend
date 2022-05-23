@@ -7,6 +7,7 @@ import dayjs from 'dayjs'
 import { useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import Link from "next/link"
 
 export default function Definitions() {
 
@@ -71,8 +72,11 @@ export default function Definitions() {
             <Navigation />
             <main className="celular:text-sm md:text-base mx-auto w-5/6 h-full">
                 <div className='flex flex-col'>
-                    <div className='py-12'>
+                    <div className='flex justify-between py-12'>
                         <h1 className='font-bold celular:text-4xl md:text-5xl'>Conceptos guardados</h1>
+                        <Link passHref href="/definitionshistory">
+                                <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Ir a Historial de Conceptos</a>
+                        </Link>
                     </div>
                     <div className='flex flex-row relative justify-left'>
                     <div className='relative w-2/5 h-14'>

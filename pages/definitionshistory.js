@@ -87,7 +87,7 @@ export default function DifinitionsHistory() {
                     <div className='flex celular:flex-col md:flex-row md:space-x-16 celular:mb-6 md:mb-0'>
                         <div className='flex flex-col p-7 shadow-md rounded-lg celular:w-full md:w-1/2 h-1/2 my-2 border'>
                             <h1 className='font-bold text-lg'>
-                                Rango de fechas
+                                Filtrar por fechas
                             </h1>
                             <div className='py-2 font-semibold '>
                                 <div className='py-1'>
@@ -106,6 +106,9 @@ export default function DifinitionsHistory() {
                                 <div className='py-1'>
                                     <input name="endDate" onChange={(e) => handleChangeDate(e)} className='w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10' type="date" />
                                 </div>
+                            </div>
+                            <div>
+                            <button  className='text-sm celular:w-full celular:h-10 md:w-40 md:h-10 bg-bluepotatohover text-white rounded-md font-medium'>Eliminar filtro</button>
                             </div>
                         </div>
                         <div className='flex flex-col w-full'>
