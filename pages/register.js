@@ -53,8 +53,7 @@ export default function Register() {
             <div>
               <div className='flex flex-col items-center'>
                 <h1 className='font-extrabold text-3xl py-3'>Regístrate</h1>
-                <p className='font-normal text-gray-600 pb-6'>O <Link passHref href='/login'><a href="replace" className='text-bluepotato hover:underline'>inicia sesión</a>
-                </Link></p>
+                
               </div>
             </div>
           </div>
@@ -131,6 +130,7 @@ export default function Register() {
                   <option className="text-gray-700" value="1">Ganadero</option>
                   <option className="text-gray-700" value="2">Cientifico</option>
                   <option className="text-gray-700" value="3">Cocinero</option>
+                  <option className="text-gray-700" value="3">Otras Ocupaciones</option>
                 </select>
                 {errors.occupation && errors.occupation.type === 'required' && <span className='text-red-600 text-sm font-normal'>Por favor ingrese su ocupacion</span>}
               </div>
@@ -147,6 +147,8 @@ export default function Register() {
                   Registrar cuenta
                 </button>
               </div>
+             <Link passHref href='/login'><a href="replace" className='text-bluepotato hover:underline'>Ya tienes una cuenta? Inicia sesión aquí</a>
+                </Link>
             </div>
           </form>
 

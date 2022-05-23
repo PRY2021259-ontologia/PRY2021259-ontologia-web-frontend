@@ -12,6 +12,7 @@ import timezone from 'dayjs/plugin/timezone'
 import { useCallback } from 'react'
 dayjs.extend(utc)
 dayjs.extend(timezone)
+import Link from "next/link"
 
 export default function DifinitionsHistory() {
 
@@ -80,7 +81,12 @@ export default function DifinitionsHistory() {
 
             <Navigation />
             <main className="celular:text-sm celular:w-3/4 md:text-base mx-auto md:w-5/6 h-full">
-                <div className='flex flex-col'>
+                <div className='flex flex-col justify-between'>
+                <div>
+          <Link passHref href="/definitions">
+         <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-medium ">Regresar</a>
+          </Link>
+          </div>
                     <div className='py-12 '>
                         <h1 className='font-bold celular:text-4xl md:text-5xl'>Historial de Conceptos</h1>
                     </div>

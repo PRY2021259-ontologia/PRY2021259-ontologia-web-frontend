@@ -49,8 +49,7 @@ export default function Login() {
             <div>
               <div className='flex flex-col items-center'>
                 <h1 className='font-extrabold text-3xl py-3'>Inicia sesión</h1>
-                <p className='font-normal text-gray-600 pb-6'>O <Link passHref href='/register'><a href="replace"className='text-bluepotato hover:underline'>regístrate</a>
-                </Link></p>
+
               </div>
             </div>
           </div>
@@ -102,6 +101,11 @@ export default function Login() {
               <button onClick={() => signIn('google')} className="border-2 border-gray-300 celular:w-28 md:w-48 h-9 rounded-md hover:bg-gray-200">
                 <FontAwesomeIcon icon={faGoogle} size="lg" />
               </button>
+            </div>
+            <div className='justify-center'>
+            <Link passHref href='/register'>
+              <a href="replace"className='text-bluepotato hover:underline '>Aún no tienes una cuenta? Regístrate aquí</a>
+                </Link>
             </div>
           </div>
         </div>
