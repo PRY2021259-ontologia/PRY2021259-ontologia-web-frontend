@@ -59,6 +59,9 @@ export default function Suggestions() {
             <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-8'>Sugerencias</h1>
             <a onClick={() => goSuggestions()} className='my-auto text-skyblue'>¿Ya has realizado una sugerencia?</a>
           </div>
+          <div>
+            <h1 className='font-semibold text-bluepotato celular:text-2xl md:text-sm celular:py-5 md:py-8'>Dejanos alguna sugerencia para poder mejorar nuestra aplicación!</h1>
+          </div>
           <div className='flex md:flex-row celular:flex-col justify-between'>
             <div className='py-10'>
               <Image layout='intrinsic' width={400} height={350} src="/remotelife.png" alt="remoteLife" />
