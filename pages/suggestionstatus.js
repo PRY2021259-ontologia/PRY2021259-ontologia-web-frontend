@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { baseUrl } from '../service/api'
 import Image from 'next/image'
 import dayjs from 'dayjs'
+import Link from "next/link"
 
 export default function SuggestionStatus() {
 
@@ -32,8 +33,15 @@ export default function SuggestionStatus() {
             <Navigation />
 
             <main className="mx-auto w-5/6 min-h-screen">
+            <div>
+                  <Link passHref href="/suggestions">
+                     <a href="replace" className=" hover:bg-gray-100 text-bluepotato px-3 py-1 rounded-md font-semibold ">Regresar</a>
+                      </Link>
+                      </div>
                 <div className='flex flex-col'>
+
                     <h1 className='font-bold celular:text-3xl md:text-5xl py-10'>Estado de sugerencia</h1>
+                    
                     <div className='flex celular:flex-col md:flex-row justify-between'>
                         <div className='flex flex-row justify-between'>
                             <div className='flex flex-col celular:space-y-20 md:space-y-16 celular:py-10 md:py-20 px-6'>
