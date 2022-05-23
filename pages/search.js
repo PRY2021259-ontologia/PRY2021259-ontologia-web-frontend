@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { Alerting } from '../utils/alert';
 import Image from 'next/image';
+import potatoes from '../assets/potatoes-image.jpg'
 
 export default function Search({ plants }) {
   const router = useRouter()
@@ -74,7 +75,7 @@ export default function Search({ plants }) {
           </div>
 
           <div className='flex md:h-screen md:items-center z-[1] celular:py-5 md:py-0 celular:relative celular:top-16 md:top-0'>
-            <Image layout='intrinsic' width={300} height={300} src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
+            <Image layout='intrinsic' width={450} height={450} src={potatoes}
               alt="home image" />
           </div>
         </div>
