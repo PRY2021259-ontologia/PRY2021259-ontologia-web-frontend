@@ -10,42 +10,9 @@ import CardSlider from '../components/cardslider';
 import React from "react";
 import ReactDOM from "react-dom";
 
-const blueBox = document.querySelectorAll('.bg-bluepotatohover');
-const skyBox = document.querySelectorAll('.bg-blue-500');
-
-const changeColor = ev => {
-  // Define button in the DOM
-  const button = ev.target.closest('button');
-  const button1 = ev.target.closest('button');
-  // Check, if the button was clicked
-  if (button) {
-    // Change color in the DIVs
-    for (const box of blueBox) {
-      box.classList.add('bg-blue-500');
-      box.classList.remove('bg-bluepotatohover');
-    } 
-    for (const box of skyBox)
-    {
-      box.classList.add('bg-bluepotatohover');
-      box.classList.remove('bg-blue-500');
-    }
-    return;
-  }
-  for (const box of blueBox) {
-    box.classList.add('bg-bluepotatohover');
-    box.classList.remove('bg-blue-500');
-  } 
-  for (const box of skyBox)
-  {
-    box.classList.add('bg-blue-500');
-    box.classList.remove('bg-bluepotatohover');
-  }
-};
-
-document.addEventListener('click', changeColor);
 
 
-export default function AssistedSearch() {
+export default function AssistedSearch({ questions }) {
   return (
     <div>
 
@@ -69,7 +36,13 @@ export default function AssistedSearch() {
             <div className="w-80 h-52 bg-blue-500  transform transition-all group-hover:delay-75 delay-200 top-12 left-6 absolute group-hover:top-32 group-hover:-right-32 rounded-lg"></div>
               <div className='flex flex-col bg-bluepotatohover items-center transform transition-all justify-center shadow-lg border rounded-lg md:ml-2 celular:mx-2 md:mr-20 p-12 h-52 w-80'>
                 <div className='py-2'>
-                  <p className='flex w-56 font-semibold text-center'>¿Lo que buscas esta relacionado a enfermedades?</p>
+                  {questions.map(question => (
+                  <div key={question.id}>
+                        <a>
+                          <h3>{question.body}</h3>
+                        </a>
+                  </div>  
+                  ))}
                 </div>
                 <div className='flex flex-row justify-center space-x-4 text-sm py-2'>
                   <button className='rounded-md w-24 h-7  text-center py-1 bg-skyblue text-white'>Sí</button>
