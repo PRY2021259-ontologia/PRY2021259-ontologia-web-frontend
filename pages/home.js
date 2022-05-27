@@ -14,16 +14,15 @@ export default function Home() {
     const state = useStore(state => state)
 
     useEffect(() => {
-        state.setSearchInput("")
         fetch("https://backend-ontologia.azurewebsites.net/api/categorydiseases").then((response) => response.json()).then((categories) => setCategories(categories));
     }, [])
 
 
 
     const handleInputChange = (newInputValue) => {
+        state.setSearchInput(newInputValue)
         console.log(newInputValue)
         console.log(state)
-        state.setSearchInput(newInputValue)
     }
 
     return (

@@ -13,7 +13,7 @@ import { useStore } from '../store'
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-export default function Search({ plants }) {
+export default function Search() {
   const router = useRouter()
   const { data: session, status } = useSession()
 
@@ -21,8 +21,10 @@ export default function Search({ plants }) {
 
   const [succes, setSucces] = useState(true)
   const searchInput = useStore(state => state.searchInput)
+  console.log(searchInput)
 
   useEffect(() => {
+    console.log(searchInput)
     if (searchInput !== "") {
       fetch("https://search-ontologia.azurewebsites.net/search?parameter=" + searchInput).then((response) => response.json()).then((enfer) => setenfer(enfer)).catch((error) => Alerting.error(error));
     }
@@ -30,10 +32,16 @@ export default function Search({ plants }) {
   }, [])
 
 
-  const goSearch = async (id, name) => {
+  const goSearch = async (resourceId) => {
+    // Requere the id of the plant
     const user = JSON.parse(localStorage.getItem('username'))
+    console.log(resourceId)
+    const plantDisease = await baseUrl.get(`/plantdiseases/${resourceId}`)
+
+    console.log(plantDisease)
+
     if (!user) {
-      router.push(`/search/${id}`)
+      router.push(`/search/${plantDisease.id}`)
       // Alerting({
       //   title: 'Error',
       //   message: 'Debes iniciar sesión para poder realizar esta acción',
@@ -44,13 +52,14 @@ export default function Search({ plants }) {
       return
     }
     const saveHistory = await baseUrl.post('/userhistories', {
-      url: `/search/${id}`,
-      textSearched: name
+      url: `/search/${plantDisease.data.id}`,
+      textSearched: searchInput
     })
+    console.log(saveHistory)
 
     if (saveHistory.status === 200) {
-      await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
-      router.push(`/search/${id}`)
+      // await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
+      router.push(`/search/${resourceId}`)
     }
   }
   return (
@@ -75,14 +84,14 @@ export default function Search({ plants }) {
 
             <div className='flex flex-wrap py-8 md:px-8 md:gap-x-10 gap-y-12'>
               {enfer.map((plant) => (
-                <div key={plant.idnombreRecurso} className='relative shadow-md shadow-gray-400 rounded-lg  celular:w-[260px] md:w-[370px] celular:h-[200px] md:h-48'>
+                <div key={plant.ontologyId} className='relative shadow-md shadow-gray-400 rounded-lg  celular:w-[260px] md:w-[370px] celular:h-[200px] md:h-48'>
                   <div className=' px-6 pt-2.5'>
                     <h1 className='text-gray-900 text-xl font-medium'>{plant.nombreCientifico}</h1>
                     <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.descripcion}</p>
                   </div>
                   <div className='absolute celular:w-[260px] md:w-[370px] bottom-0 items-center h-10 px-6 py-1.5 rounded-b-lg bg-whiteresultado'>
                     {/* <Link href={'/search/' + plant.id} key={plant.id}> */}
-                    <a onClick={() => goSearch(plant.idPlantDise, plant.nombreCientifico)} className='text-indigo-700 hover:underline hover:cursor-pointer'>Ver detalles →</a>
+                    <a onClick={() => goSearch(plant.ontologyId)} className='text-indigo-700 hover:underline hover:cursor-pointer'>Ver detalles →</a>
                     {/* </Link> */}
                   </div>
                 </div>
@@ -101,17 +110,4 @@ export default function Search({ plants }) {
       <Footer />
     </div>
   )
-}
-
-export const getStaticProps = async () => {
-
-  //const id = context.params.id;
-  const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases');
-  const data = await plat.json();
-
-  return {
-    props: {
-      plants: data
-    },
-  }
 }

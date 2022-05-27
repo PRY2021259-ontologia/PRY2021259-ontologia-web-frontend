@@ -91,22 +91,7 @@ export default function Details({ plant }) {
   )
 }
 
-export const getStaticPaths = async () => {
-  const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases');
-  const data = await plat.json();
-  const paths = data.map(plant => {
-
-    return {
-      params: { id: plant.id.toString() }
-    }
-  })
-  return {
-    paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const id = context.params.id;
   const plat = await fetch('https://backend-ontologia.azurewebsites.net/api/plantdiseases/' + id);
   const data = await plat.json();
