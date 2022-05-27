@@ -9,10 +9,18 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { baseUrl } from '../service/api'
-
+import { useStore } from '../store'
 
 export default function Index({ categories, plants, plantCategories }) {
   const { data: session, status } = useSession()
+
+  const state = useStore(state => state)
+
+  const handleInputChange = (newInputValue) => {
+    console.log(newInputValue)
+    console.log(state)
+    state.setSearchInput(newInputValue)
+  }
 
   useEffect(() => {
     (async () => {
@@ -39,13 +47,13 @@ export default function Index({ categories, plants, plantCategories }) {
       <Navigation />
 
       <main className=' celular:text-sm celular:w-full md:text-base md:w-2/3 md:mx-auto min-h-screen'>
-          <div className='flex justify-center mb-8 mt-12'>
-            <Image width={320} height={59} src="/Frame.png" alt="home image" />
-          </div>
+        <div className='flex justify-center mb-8 mt-12'>
+          <Image width={320} height={59} src="/Frame.png" alt="home image" />
+        </div>
 
         <div className='flex md:flex-row relative justify-center'>
           <div className='relative celular:w-full celular:mx-8 md:w-3/5 z-[1]' >
-            <input className="w-full rounded-md px-3 border border-black h-10 " type="text" placeholder='Ingrese su búsqueda..'></input>
+            <input className="w-full rounded-md px-3 border border-black h-10 " type="text" placeholder='Ingrese su búsqueda..' onChange={(e) => handleInputChange(e.target.value)}></input>
             <div className='pointer-events-none z-[2] absolute text-black md:inset-y-2 celular:inset-y-2.5 celular:right-0 celular: px-3 md:right-3 '>
               <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
             </div>
@@ -139,17 +147,17 @@ export const getStaticProps = async (context) => {
   //var mergerdCat = [];
 
   //for (let i = 0; i < categoryId.length; i++) {
-    //const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i] + '/plantdiseases')
-    //const plantCategory = await plantCat.json();
-    //for (let j = 0; j < plantCategory.length; j++) {
-     // plantCategory[j] = { ...plantCategory[j], categoryId: categoryId[i] }
-    //}
-    //plantCategories.prototype.push.apply(plantCategories, plantCategory);
-    //plantCategories = [...plantCategories, ...plantCategory];
-    //const plantCat2 = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i + 1] + '/plantdiseases')
-    //const plantCategory2 = await plantCat2.json();
-    //mergerdCat = plantCategory.concat(plantCategory2);
-    //console.log(plantCategories)
+  //const plantCat = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i] + '/plantdiseases')
+  //const plantCategory = await plantCat.json();
+  //for (let j = 0; j < plantCategory.length; j++) {
+  // plantCategory[j] = { ...plantCategory[j], categoryId: categoryId[i] }
+  //}
+  //plantCategories.prototype.push.apply(plantCategories, plantCategory);
+  //plantCategories = [...plantCategories, ...plantCategory];
+  //const plantCat2 = await fetch('https://backend-ontologia.azurewebsites.net/api/categorydiseases/' + categoryId[i + 1] + '/plantdiseases')
+  //const plantCategory2 = await plantCat2.json();
+  //mergerdCat = plantCategory.concat(plantCategory2);
+  //console.log(plantCategories)
   //}
   //tengo cateries, aplico filter para devolver por categoria, con la lista de las categories, se hace for para devolver array de la categoria en especifico
 

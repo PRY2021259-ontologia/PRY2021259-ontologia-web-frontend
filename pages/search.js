@@ -9,10 +9,27 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { Alerting } from '../utils/alert';
 import Image from 'next/image';
+import { useStore } from '../store'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Search({ plants }) {
   const router = useRouter()
   const { data: session, status } = useSession()
+
+  const [enfer, setenfer] = useState([])
+
+  const [succes, setSucces] = useState(true)
+  const searchInput = useStore(state => state.searchInput)
+
+  useEffect(() => {
+    if (searchInput !== "") {
+      fetch("https://search-ontologia.azurewebsites.net/search?parameter=" + searchInput).then((response) => response.json()).then((enfer) => setenfer(enfer)).catch((error) => Alerting.error(error));
+    }
+    console.log(enfer)
+  }, [])
+
+
   const goSearch = async (id, name) => {
     const user = JSON.parse(localStorage.getItem('username'))
     if (!user) {
@@ -57,15 +74,15 @@ export default function Search({ plants }) {
             </div>
 
             <div className='flex flex-wrap py-8 md:px-8 md:gap-x-10 gap-y-12'>
-              {plants.map((plant) => (
-                <div key={plant.id} className='relative shadow-md shadow-gray-400 rounded-lg  celular:w-[260px] md:w-[370px] celular:h-[200px] md:h-48'>
+              {enfer.map((plant) => (
+                <div key={plant.idnombreRecurso} className='relative shadow-md shadow-gray-400 rounded-lg  celular:w-[260px] md:w-[370px] celular:h-[200px] md:h-48'>
                   <div className=' px-6 pt-2.5'>
-                    <h1 className='text-gray-900 text-xl font-medium'>{plant.plantDiseaseName}</h1>
-                    <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.plantDiseaseDescription}</p>
+                    <h1 className='text-gray-900 text-xl font-medium'>{plant.nombreCientifico}</h1>
+                    <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.descripcion}</p>
                   </div>
                   <div className='absolute celular:w-[260px] md:w-[370px] bottom-0 items-center h-10 px-6 py-1.5 rounded-b-lg bg-whiteresultado'>
                     {/* <Link href={'/search/' + plant.id} key={plant.id}> */}
-                    <a onClick={() => goSearch(plant.id, plant.plantDiseaseName)} className='text-indigo-700 hover:underline hover:cursor-pointer'>Ver detalles →</a>
+                    <a onClick={() => goSearch(plant.idPlantDise, plant.nombreCientifico)} className='text-indigo-700 hover:underline hover:cursor-pointer'>Ver detalles →</a>
                     {/* </Link> */}
                   </div>
                 </div>

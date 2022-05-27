@@ -6,13 +6,25 @@ import Footer from '../components/footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
+import { useStore } from '../store'
 
 export default function Home() {
     const [categories, setCategories] = useState([])
 
+    const state = useStore(state => state)
+
     useEffect(() => {
+        state.setSearchInput("")
         fetch("https://backend-ontologia.azurewebsites.net/api/categorydiseases").then((response) => response.json()).then((categories) => setCategories(categories));
     }, [])
+
+
+
+    const handleInputChange = (newInputValue) => {
+        console.log(newInputValue)
+        console.log(state)
+        state.setSearchInput(newInputValue)
+    }
 
     return (
         <div >
@@ -28,7 +40,7 @@ export default function Home() {
 
                 <div className='flex flex-row relative justify-center'>
                     <div className='relative w-3/5'>
-                        <input className="w-full rounded-md px-3 border border-black h-10" type="text" placeholder='Ingrese su búsqueda..'></input>
+                        <input className="w-full rounded-md px-3 border border-black h-10" type="text" onChange={(e) => handleInputChange(e.target.value)} placeholder='Ingrese su búsqueda..'></input>
                         <div className='pointer-events-none absolute text-black inset-y-2 right-3'>
                             <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
                         </div>
@@ -53,7 +65,7 @@ export default function Home() {
                     <div className=''>
                         {
                             categories.map((category) => (
-                                <div>
+                                <div key={category.categoryDiseaseName}>
 
                                     <div className='text-center'>
                                         <p>{category.categoryDiseaseName}</p>
