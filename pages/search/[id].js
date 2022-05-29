@@ -2,40 +2,9 @@ import Navigation from '../../components/navigation'
 import Description from '../../components/description'
 import Footer from '../../components/footer'
 import Image from 'next/image'
-import { baseUrl } from '../../service/api'
-import { Alerting } from '../../utils/alert'
 
 export default function Details({ plant }) {
 
-  const saveConcept = async () => {
-    const user = JSON.parse(localStorage.getItem('username'))
-    if (!user) return
-    const response = await baseUrl.get(`/users/${user.id}/userconcepts`)
-    const existConcept = response.data.find(concept => concept.userConceptTitle === plant.plantDiseaseName)
-    if (existConcept) {
-      Alerting({
-        title: 'Ya tienes este concepto guardado',
-        message: 'Puedes verlo en la sección de conceptos guardados',
-        type: 'warning',
-        icon: 'warning'
-      })
-      return;
-    }
-    const addConcept = await baseUrl.post('/userconcepts', {
-      userConceptTitle: plant?.plantDiseaseName,
-      userConceptDescription: plant?.plantDiseaseDescription,
-      url: '/search/' + plant?.id,
-    })
-    if (addConcept.status === 200) {
-      await baseUrl.post(`users/${user.id}/userconcepts/${addConcept.data.id}/`)
-      Alerting({
-        title: 'Concepto guardado',
-        message: 'Puedes verlo en la sección de conceptos guardados',
-        type: 'success',
-        icon: 'success'
-      })
-    }
-  }
   return (
     <div>
 
@@ -48,7 +17,7 @@ export default function Details({ plant }) {
           <div className='flex md:flex-row celular:flex-col my-6 py-8 px-10 justify-between md:shadow-md rounded-lg w-full'>
             <div className="flex md:flex-row celular:flex-col celular:items-center md:items-end md:space-x-20">
               <h1 className='font-extrabold text-4xl md:py-0 celular:py-4 text-center'>Enfermedades de la papa</h1>
-              <button onClick={() => saveConcept(plant)} className='celular:w-full celular:h-10 md:w-40 md:h-8 bg-skyblue text-white rounded-md font-medium'>Guardar detalle</button>
+              <button className='celular:w-full celular:h-10 md:w-40 md:h-8 bg-skyblue text-white rounded-md font-medium'>Guardar detalle</button>
             </div>
             <div className='flex flex-col md:py-0 celular:py-10 md:w-[250px]'>
               <div className='flex justify-center'>
