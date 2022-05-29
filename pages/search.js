@@ -58,7 +58,9 @@ export default function Search() {
     console.log(saveHistory)
 
     if (saveHistory.status === 200) {
-      await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
+      // TODO: Fix thath the post is not working
+
+      // await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
       router.push(`/search/${resourceId}`)
     }
   }
