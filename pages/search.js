@@ -41,7 +41,7 @@ export default function Search() {
     console.log(plantDisease)
 
     if (!user) {
-      router.push(`/search/${plantDisease.id}`)
+      router.push(`/search/${resourceId}`)
       // Alerting({
       //   title: 'Error',
       //   message: 'Debes iniciar sesión para poder realizar esta acción',
@@ -52,13 +52,13 @@ export default function Search() {
       return
     }
     const saveHistory = await baseUrl.post('/userhistories', {
-      url: `/search/${plantDisease.data.id}`,
+      url: `/search/${resourceId}`,
       textSearched: searchInput
     })
     console.log(saveHistory)
 
     if (saveHistory.status === 200) {
-      // await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
+      await baseUrl.post(`/userhistories/${saveHistory.data.id}/userhistories/${user.id}`)
       router.push(`/search/${resourceId}`)
     }
   }

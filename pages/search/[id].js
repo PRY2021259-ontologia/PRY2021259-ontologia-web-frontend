@@ -4,8 +4,11 @@ import Footer from '../../components/footer'
 import Image from 'next/image'
 import { baseUrl } from '../../service/api'
 import { Alerting } from '../../utils/alert'
+import { useRouter } from 'next/router'
 
-export default function Details({ plant }) {
+export default function Details({ plant, searchId }) {
+  const router = useRouter()
+  const { id } = router.query
 
   const saveConcept = async () => {
     const user = JSON.parse(localStorage.getItem('username'))
@@ -21,12 +24,15 @@ export default function Details({ plant }) {
       })
       return;
     }
+
     const addConcept = await baseUrl.post('/userconcepts', {
       userConceptTitle: plant?.plantDiseaseName,
       userConceptDescription: plant?.plantDiseaseDescription,
-      url: '/search/' + plant?.id,
+      url: '/search/' + id,
     })
+    console.log(addConcept)
     if (addConcept.status === 200) {
+      console.log(`https://backend-ontologia.azurewebsites.net/api/users/${user.id}/userconcepts/${addConcept.data.id}/`)
       await baseUrl.post(`users/${user.id}/userconcepts/${addConcept.data.id}/`)
       Alerting({
         title: 'Concepto guardado',
@@ -67,7 +73,7 @@ export default function Details({ plant }) {
               <div className=' px-10 py-5 '>
                 <p>{plant.plantDiseaseDescription}</p>
               </div>
-            </div>
+            </div>plant
             <div className='flex md:flex-row celular:flex-col-reverse md:justify-between items-center h-72 shadow-lg rounded-xl w-1/2 m-6 celular:p-5 md:p-20'>
               <div>
                 <ul className='text-skyblue'>
