@@ -1,5 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
@@ -8,5 +7,3 @@ const nextConfig = {
   BASE_URL_DEV: 'https://backend-ontologia.azurewebsites.net/api/',
   BASE_URL: 'https://localhost:7159/api'
 }
-
-module.exports = nextConfig
