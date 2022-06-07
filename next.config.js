@@ -1,6 +1,12 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  trailingSlash: true,
+  trailingSlash: true
+}
+
+module.exports = nextConfig
+
+module.exports = {
   images: {
     domains: ['images.squarespace-cdn.com', 'images.unsplash.com', 'blush.design'],
   },
