@@ -54,8 +54,8 @@ export default function Suggestions() {
       <Navigation />
 
       <main className="celular:text-sm md:text-base mx-auto w-2/3 min-h-screen">
-        <div className='flex flex-col'>
-          <div className="flex justify-between">
+        <div className='flex flex-col '>
+          <div className="flex md:flex-row justify-between celular:flex-col">
             <h1 className='font-bold celular:text-2xl md:text-5xl celular:py-5 md:py-10'>Sugerencias</h1>
             <a onClick={() => goSuggestions()} className='text-indigo-700 hover:underline hover:cursor-pointer my-auto'>¿Ya haz realizado una sugerencia?</a>
           </div>

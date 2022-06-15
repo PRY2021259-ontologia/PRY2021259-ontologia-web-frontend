@@ -88,21 +88,21 @@ export default function Login() {
                     Iniciar sesión
                   </button>
                 </div>
-                <div className='flex flex-row justify-center py-2 text-gray-500'>
+                {/* <div className='flex flex-row justify-center py-2 text-gray-500'>
                   <p className='w-full pt-3 text-center border-b leading-[0.1em]'>
                     <span className='bg-white py-3 px-2'>También puedes iniciar sesión con</span></p>
-                </div>
+                </div> */}
               </div>
             </form>
 
-            <div className='flex flex-row celular:justify-around md:justify-between text-gray-500 py-5'>
+            {/* <div className='flex flex-row celular:justify-around md:justify-between text-gray-500 py-5'>
               <button onClick={() => signIn('facebook')} className="border-2 border-gray-300 celular:w-28 md:w-48 h-9 rounded-md hover:bg-gray-200" >
                 <FontAwesomeIcon icon={faFacebook} size="lg" />
               </button>
               <button onClick={() => signIn('google')} className="border-2 border-gray-300 celular:w-28 md:w-48 h-9 rounded-md hover:bg-gray-200">
                 <FontAwesomeIcon icon={faGoogle} size="lg" />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>

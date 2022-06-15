@@ -5,7 +5,7 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { baseUrl } from '../service/api'
@@ -15,6 +15,8 @@ export default function Index({ categories, plants, plantCategories }) {
   const { data: session, status } = useSession()
 
   const state = useStore(state => state)
+
+  const btnSearchRef = useRef(null)
 
   const handleInputChange = (newInputValue) => {
     console.log(newInputValue)
@@ -39,6 +41,13 @@ export default function Index({ categories, plants, plantCategories }) {
       }
     })()
   }, [session])
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      btnSearchRef.current.click()
+    }
+  }
+  
   return (
     <div>
 
@@ -53,7 +62,7 @@ export default function Index({ categories, plants, plantCategories }) {
 
         <div className='flex md:flex-row relative justify-center'>
           <div className='relative celular:w-full celular:mx-8 md:w-3/5 z-[1]' >
-            <input className="w-full rounded-md px-3 border border-black h-10 " type="text" placeholder='Ingrese su búsqueda..' onChange={(e) => handleInputChange(e.target.value)}></input>
+            <input className="w-full rounded-md px-3 border border-black h-10 " type="text" placeholder='Ingrese su búsqueda..' onChange={(e) => handleInputChange(e.target.value)} onKeyDown={handleEnter}></input>
             <div className='pointer-events-none z-[2] absolute text-black md:inset-y-2 celular:inset-y-2.5 celular:right-0 celular: px-3 md:right-3 '>
               <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
             </div>
@@ -62,7 +71,7 @@ export default function Index({ categories, plants, plantCategories }) {
 
         <div className='flex md:flex-row justify-center md:py-6 2xl:space-x-10 celular:flex-col items-center celular:space-x-0 py-6 md:space-x-10'>
           <Link passHref href="/search">
-            <button href="replace" className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
+            <button href="replace" ref={btnSearchRef} className="celular:my-1 celular:w-80 rounded-xl hover:bg-bluebuscarhover md:w-48 h-9 bg-bluebuscar text-white celular:text-lg md:text-base">
               Buscar
             </button>
           </Link>

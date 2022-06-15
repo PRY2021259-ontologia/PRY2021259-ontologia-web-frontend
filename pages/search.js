@@ -21,6 +21,7 @@ export default function Search() {
 
   const [succes, setSucces] = useState(true)
   const searchInput = useStore(state => state.searchInput)
+  const [search, setSearch] = useState(searchInput)
   console.log(searchInput)
 
   useEffect(() => {
@@ -74,8 +75,8 @@ export default function Search() {
         <div className='flex md:flex-row celular:flex-col-reverse'>
           <div className='flex flex-col celular:w-full md:w-3/4'>
             <div className='items-center md:px-5 md:py-6 celular:flex celular:text-center'>
-              <div className='relative z-[1] md:w-2/3 celular:w-full celular:bottom-[250px] md:bottom-0'>
-                <input className="celular:w-60 md:w-full rounded-md px-3 border border-gray-400 h-10" type="text" placeholder='Búsqueda'></input>
+              <div className='relative z-[1] md:w-2/3 celular:m-auto md:bottom-0'>
+                <input className="celular:w-60 md:w-full rounded-md px-3 border border-gray-400 h-10" type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder='Búsqueda'></input>
                 <div className='absolute text-gray-400 z-[2] md:inset-y-2 md:right-3 celular:inset-y-2.5 celular:flex celular:right-5'>
                   <Link href="/search">
                     <a><FontAwesomeIcon icon={faSearch} size="1x" /></a>
@@ -91,7 +92,7 @@ export default function Search() {
                     <h1 className='text-gray-900 text-xl font-medium'>{plant.nombreCientifico}</h1>
                     <p className='py-2 text-gray-500 celular:h-[90px] md:h-[105px] line-clamp-4'>{plant.descripcion}</p>
                   </div>
-                  <div className='absolute celular:w-[260px] md:w-[370px] bottom-0 items-center h-10 px-6 py-1.5 rounded-b-lg bg-whiteresultado'>
+                  <div className='absolute md:w-[370px] bottom-0 items-center h-10 px-6 py-1.5 rounded-b-lg bg-whiteresultado'>
                     {/* <Link href={'/search/' + plant.id} key={plant.id}> */}
                     <a onClick={() => goSearch(plant.ontologyId)} className='text-indigo-700 hover:underline hover:cursor-pointer'>Ver detalles →</a>
                     {/* </Link> */}
@@ -101,7 +102,7 @@ export default function Search() {
             </div>
           </div>
 
-          <div className='flex md:h-screen md:items-center z-[1] celular:py-5 md:py-0 celular:relative celular:top-16 md:top-0'>
+          <div className='flex md:h-screen md:items-center z-[1] celular:py-5 md:py-0 celular:relative md:top-0'>
             <Image layout='intrinsic' width={300} height={300} src="https://images.squarespace-cdn.com/content/v1/5af9fbd1f407b4826aaf11eb/1610302466407-PUE7R3QKFSCE48BB91YR/Tech+Life+-+Communication.png"
               alt="home image" />
           </div>

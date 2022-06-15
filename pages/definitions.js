@@ -85,14 +85,14 @@ export default function Definitions() {
                                     <input name="startDate" onChange={(e) => handleChangeDate(e)} className='w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10' type="date" />
                                 </div>
                             </div>
-                            <div className='py-2 font-medium '>
+                            {/* <div className='py-2 font-medium '>
                                 <div className='py-1'>
                                     <label className='' htmlFor="">Fecha de fin</label>
                                 </div>
                                 <div className='py-1'>
                                     <input name="endDate" onChange={(e) => handleChangeDate(e)} className='w-full rounded-md px-3 outline-1 outline-offset-0 outline-gray-400 border border-gray-300 text-gray-600 h-10' type="date" />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='flex flex-col'>
 
